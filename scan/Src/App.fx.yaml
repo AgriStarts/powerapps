@@ -25,6 +25,18 @@ App As appinfo:
         
         // Bool variable for changing app width and height
         Set(AppOnPC, false);
+        
+        new
+        
+            Function(BarcodeValue) := 
+                If(
+                    StartsWith(BarcodeValue, "B") && IsMatch(BarcodeValue, "^B[A-Za-z][0-9]{4}$"), 
+                        "Bed Code",
+                    StartsWith(BarcodeValue, "J") && IsMatch(BarcodeValue, "^J[0-9]{7}T[0-9]{4}$"), 
+                        "Job and Tech Code",
+                    "Invalid Code"
+                )
+        );
     StartScreen: ='Scan Screen'
     Theme: =PowerAppsTheme
 

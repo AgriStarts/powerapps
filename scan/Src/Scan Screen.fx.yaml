@@ -104,7 +104,7 @@
 
     BarcodeContainer As groupContainer.verticalAutoLayoutContainer:
         DropShadow: =DropShadow.None
-        Height: =Parent.Height - (Scan_Header.Height + BarcodeReader.Height + ScanInput.Height)
+        Height: =836
         LayoutDirection: =LayoutDirection.Vertical
         LayoutMode: =LayoutMode.Auto
         RadiusBottomLeft: =0
@@ -112,13 +112,14 @@
         RadiusTopLeft: =0
         RadiusTopRight: =0
         Width: =Parent.Width
-        Y: =Scan_Header.Height + ScanInput.Height + 1
+        Y: =221
         ZIndex: =3
 
         BarcodeTitleContainer As groupContainer.horizontalAutoLayoutContainer:
             BorderColor: =RGBA(0, 18, 107, 1)
             BorderThickness: =2
             DropShadow: =DropShadow.None
+            Fill: =RGBA(209, 232, 178, 1)
             FillPortions: =0
             Height: =50
             LayoutAlignItems: =LayoutAlignItems.Center
@@ -370,26 +371,28 @@
                         ZIndex: =1
 
     BarcodeCoverRect As rectangle:
-        Fill: =RGBA(56, 96, 178, 0)
+        Fill: =RGBA(0, 0, 0, 0)
         Height: =BarcodeTitleContainer.Height
         Width: =Parent.Width
         Y: =BarcodeContainer.Y
         ZIndex: =4
 
     ScanInput As text:
-        Default: =""
+        Default: =
         FocusedBorderColor: =Color.Green
         FocusedBorderThickness: =6
         Height: =100
+        HoverColor: =Self.Color
+        HoverFill: =RGBA(255, 255, 255, 1)
         OnChange: |
-            =Switch(
-                Left(Self.Text, 1),
+            =If(
             
-                // If the first character is "B", update the record with Bed and refresh ScannedTime
-                "B", 
+                Left(Self.Text,1) = "B" && Len(Self.Text) = 6,
+                // If the first character is "B" and lenght is 6, update the record with Bed and refresh ScannedTime
+            
                 If(
                     IsBlank(Bed),
-                    
+            
                     Set(Bed, Self.Text);,
             
                     If(
@@ -401,18 +404,19 @@
             
                         Notify("This bed is already scanned.", NotificationType.Warning);
                     )
-                );
+                ); 
             
                 Reset(Self);
                 SetFocus(Self);,
             
-                "J",
+                Left(Self.Text, 1) = "J",
                 // Ensure Bed has been scanned before updating Job
                 If(
                     !IsBlank(Bed) && ScanTypeDropdown.Selected.Value = "MV",
             
                     // Set Job to the part before "T"
                     Set(Job, Left(Self.Text, Find("T", Self.Text) - 1));
+                    If(Len(Job) <> 8, UpdateContext({invalid: true})); 
             
                     // Set Tech to the part after "T"
                     Set(Tech, Mid(Self.Text, Find("T", Self.Text)));
@@ -456,7 +460,7 @@
         Size: =48
         Width: =Parent.Width - 2
         X: =1
-        Y: =Scan_Header.Height + 1
+        Y: =70
         ZIndex: =5
 
     Scan_Header As Header:
@@ -500,4 +504,45 @@
         X: =ScanTypeDropdown.X - Self.Width
         Y: =ScanTypeDropdown.Y
         ZIndex: =9
+
+    Info_pane As groupContainer.manualLayoutContainer:
+        BorderColor: =RGBA(9, 33, 98, 1)
+        BorderThickness: =1
+        Fill: =RGBA(232, 244, 217, 1)
+        Height: =50
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =0
+        RadiusTopLeft: =0
+        RadiusTopRight: =0
+        Width: =638
+        X: =1
+        Y: =171
+        ZIndex: =11
+
+        Label1 As label:
+            Align: =Align.Center
+            Height: =50
+            Size: =21
+            Text: |-
+                ="Current Bed: "
+            Width: =Parent.Width/3
+            Wrap: =false
+            ZIndex: =1
+
+        Label2 As label:
+            Align: =Align.Center
+            Height: =50
+            Size: =21
+            Text: |-
+                =If(
+                    Bed <> Blank(),
+                    Right(
+                        Bed,
+                        4
+                    ),
+                    "-"
+                )
+            Width: =Parent.Width/3
+            X: =213
+            ZIndex: =2
 
