@@ -100,7 +100,7 @@
         ZIndex: =9
 
     Home_LeftNavBar As LeftNavBar:
-        Height: =Max(App.Height) - (Home_Header.Height + Home_Footer.Height)
+        Height: =996
         Width: =Home_LeftNavBar.MenuWidth
         Y: =Home_Header.Height
         ZIndex: =10
