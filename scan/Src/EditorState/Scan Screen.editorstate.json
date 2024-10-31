@@ -1317,7 +1317,7 @@
       "MetaDataIDKey": "",
       "Name": "BarcodeValidationFunction_1",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 5,
+      "ParentIndex": 6,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3741,7 +3741,7 @@
       "MetaDataIDKey": "",
       "Name": "Info_pane",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 6,
+      "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
