@@ -8,6 +8,14 @@
       "apiTier": "Premium",
       "authenticationType": "sqlAuthentication",
       "displayName": "SQL Server",
+      "executionRestrictions": {
+        "apiId": "/providers/microsoft.powerapps/apis/shared_sql",
+        "apiVer": 2,
+        "appVer": "3.24102.17",
+        "modifiedOn": "2024-10-31 14:13:28",
+        "policy": "{\"tabularActions\":{\"[dbo].[prodscanmv]\":[\"post\",\"patch\",\"get\"]},\"serviceActions\":[]}",
+        "version": 2
+      },
       "gatewayObjectIdHint": "170b2334-0a4e-420f-87fe-a925f1308af7",
       "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1715/1.0.1715.3906/sql/icon.png",
       "id": "/providers/microsoft.powerapps/apis/shared_sql",
