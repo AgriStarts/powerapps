@@ -1,0 +1,107 @@
+"'Home Screen' As screen":
+
+    BackgroundRect As rectangle:
+        Fill: =RGBA(250, 250, 250, 1)
+        Height: =Parent.Height - (Home_Header.Height + Home_Footer.Height)
+        Width: =Parent.Width - (Home_LeftNavBar.Width + Home_RightNavBar.Width)
+        X: =Home_RightNavBar.Width
+        Y: =Home_Header.Height
+        ZIndex: =1
+
+    Home_Footer As Footer:
+        Height: =70
+        Y: =Parent.Height - Self.Height
+        ZIndex: =2
+
+    Home_Header As Header:
+        HeaderValue: =""
+        Height: =70
+        ZIndex: =3
+
+    Home_RightNavBar As RightNavBar:
+        Height: =Max(App.Height) - (Home_Header.Height + Home_Footer.Height)
+        X: =Parent.Width - Self.Width
+        Y: =Home_Header.Height
+        ZIndex: =4
+
+    TutorialNavigator1 As gallery.TutorialGalleryHorizontal:
+        AccessibleLabel: ="Layouts_Tutorial_Gallery_Accessible_Text"
+        Height: =85
+        Items: |-
+            =Table(           
+             {Step: 0, Text:"Navigate to the scan page.", Image: ScanPage},           
+             {Step: 1, Text:"Select the Barcode Reader button.", Image: ScanButton},           
+             {Step: 2, Text:"Hover over a barcode you want to scan.", Image: Scan},           
+             {Step: 3, Text:"Select Finish to add all the scans you created.", Image: FinishButton}
+            )
+        ShowScrollbar: =false
+        TemplatePadding: =8
+        TemplateSize: =25
+        Width: =CountRows(Self.AllItems) * (Self.TemplateWidth + Self.TemplatePadding) + 8
+        X: =Parent.Width/2 - Self.Width/2
+        Y: =Parent.Height - (Self.Height + Home_Footer.Height)
+        ZIndex: =5
+
+        Circle1 As circle:
+            BorderThickness: =2
+            Fill: =If(Or(ThisItem.Step = 0 && IsBlank(_guideStep), ThisItem.Step = _guideStep), iconPrev1.Color, RGBA(0,0,0,0))
+            FocusedBorderThickness: =4
+            Height: =Circle1.Width
+            OnSelect: =Set(_guideStep, ThisItem.Step)
+            TabIndex: =0
+            Width: =Parent.TemplateWidth - 5
+            X: =Parent.TemplateWidth/2 - Self.Width/2
+            Y: =Parent.TemplateHeight/2 - Self.Height/2
+            ZIndex: =1
+
+    TutorialImage1 As image:
+        AccessibleLabel: ="Layouts_Tutorial_Image_Accessible_Text"
+        BorderColor: =AgriBlue
+        BorderThickness: =2
+        Height: =650
+        Image: =If(IsBlank(_guideStep), First(TutorialNavigator1.AllItems).Image, LookUp(TutorialNavigator1.AllItems, Step = _guideStep).Image)
+        ImagePosition: =ImagePosition.Stretch
+        Width: =Parent.Width - (Home_RightNavBar.Width * 2) - 40
+        X: =90
+        Y: =Home_Header.Height + 20
+        ZIndex: =6
+
+    TutorialText1 As label:
+        Align: =Align.Center
+        Height: =200
+        LineHeight: =1.3
+        PaddingLeft: =20
+        PaddingRight: =20
+        Size: =20
+        Text: =If(IsBlank(_guideStep), First(TutorialNavigator1.AllItems).Text, LookUp(TutorialNavigator1.AllItems, Step = _guideStep).Text)
+        Width: =Parent.Width - ((Home_RightNavBar.Width * 2) + iconPrev1.Width + iconNext1.Width)
+        X: =(Parent.Width - Self.Width)/2
+        Y: =TutorialNavigator1.Y - Self.Height
+        ZIndex: =7
+
+    iconPrev1 As icon.ChevronLeft:
+        Icon: =Icon.ChevronLeft
+        OnSelect: =Set(_guideStep, Max(_guideStep-1, First(TutorialNavigator1.AllItems).Step))
+        TabIndex: =0
+        Tooltip: ="Previous step"
+        Visible: =_guideStep > 0
+        X: =TutorialText1.X - iconPrev1.Width
+        Y: =TutorialText1.Y + TutorialText1.Height / 2 - Self.Height/2
+        ZIndex: =8
+
+    iconNext1 As icon.ChevronRight:
+        Icon: =Icon.ChevronRight
+        OnSelect: =Set(_guideStep, Min(_guideStep+1, Last(TutorialNavigator1.AllItems).Step))
+        TabIndex: =0
+        Tooltip: ="Next step"
+        Visible: =Last(TutorialNavigator1.AllItems).Step > _guideStep
+        X: =TutorialText1.X + TutorialText1.Width
+        Y: =iconPrev1.Y
+        ZIndex: =9
+
+    Home_LeftNavBar As LeftNavBar:
+        Height: =Max(App.Height) - (Home_Header.Height + Home_Footer.Height)
+        Width: =Home_LeftNavBar.MenuWidth
+        Y: =Home_Header.Height
+        ZIndex: =10
+

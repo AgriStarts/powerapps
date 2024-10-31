@@ -1,0 +1,16 @@
+RightNavBar As CanvasComponent:
+    Fill: =RGBA(0, 0, 0, 0)
+    Height: =Max(App.Height) - 100
+    Width: =70
+    X: =0
+    Y: =0
+    ZIndex: =3
+
+    RightNavRect As rectangle:
+        Fill: =RGBA(43, 53, 131, 1)
+        Height: =Parent.Height
+        Width: =Parent.Width
+        X: =
+        Y: =
+        ZIndex: =1
+

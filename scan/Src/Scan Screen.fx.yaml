@@ -1,0 +1,503 @@
+"'Scan Screen' As screen":
+    OnVisible: |
+        =Set(Bed, Blank());
+        Set(Job, Blank());
+        Set(Tech, Blank());
+        Reset(ScanInput);
+        SetFocus(ScanInput);
+
+    SessionBtn As button:
+        BorderThickness: =0
+        Fill: =AgriBlue
+        Height: =80
+        OnSelect: |-
+            =Set(varScanGUID, Blank());
+            Set(Bed, Blank());
+            Set(Tech, Blank());
+            Set(Job, Blank());
+            Clear(colScannedItems);
+            Reset(ScanInput);
+            SetFocus(ScanInput);
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =0
+        RadiusTopLeft: =0
+        RadiusTopRight: =0
+        Size: =24
+        Text: ="New Session"
+        Width: =Parent.Width
+        Y: =Parent.Height - Self.Height
+        ZIndex: =1
+
+    "BarcodeReader As 'Barcode Reader'":
+        BorderFillColor: =RGBA(0, 18, 107, 1)
+        BorderRadius: =0
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledContentColor: =RGBA(166, 166, 166, 1)
+        DisabledFillColor: =RGBA(244, 244, 244, 1)
+        DisplayMode: =DisplayMode.Edit
+        FillColor: =RGBA(56, 96, 178, 1)
+        FontSize: =24
+        Height: =80
+        HoverBorderColor: =RGBA(88, 115, 171, 1)
+        HoverContentColor: =RGBA(255, 255, 255, 1)
+        HoverFillColor: =RGBA(47, 81, 151, 1)
+        OnCancel: =false
+        OnChange: =
+        OnScan: |-
+            =Switch(
+                // Get the first character of the input from the ScanInput control
+                Left(First(BarcodeReader.Barcodes).Value, 1),
+                
+                // If the first character is "J", set the Job variable to the scanned input
+                "J", If(
+                        IsBlank(Bed),
+                        Set(Job, First(BarcodeReader.Barcodes).Value),
+                        Notify("Please scan the bed first.")
+                    ),
+                
+                // If the first character is "T" and Job is not blank, set the Tech variable to the scanned input
+                "T", If(
+                    !IsBlank(Job), 
+                    Set(Tech, First(BarcodeReader.Barcodes).Value);
+            
+                    Collect(
+                        colScannedItems,
+                        {
+                            Bed: Bed, 
+                            Job: Job,
+                            Tech: Tech,
+                            ScannedTime: Text(Now(), "HH:mm:ss") & ":" & Text((Now()), "[$-en-US]00"), 
+                            ScanGUID: GUID()
+                        }
+                    );
+            
+                    // Clear the Job variable by setting it to Blank
+                    Set(Job, Blank());
+            
+                    // Clear the Tech variable by setting it to Blank
+                    Set(Tech, Blank());
+            
+                    // Clear the Bed variable by setting it to Blank
+                    Set(Bed, Blank());, 
+                    Notify("Please scan the job number first.")
+                ),
+            
+                "B", // If "B" is triggered and Tech is not blank, set the Bed variable to the scanned input
+                    Set(Bed, First(BarcodeReader.Barcodes).Value);,
+            
+                // If none of the scans trigger, send error.
+                Notify("Error.");
+            );
+        PaddingLeft: =5
+        PaddingRight: =5
+        PressedBorderColor: =RGBA(56, 96, 178, 1)
+        PressedContentColor: =RGBA(56, 96, 178, 1)
+        PressedFillColor: =RGBA(255, 255, 255, 1)
+        ScanningMode: ='BarcodeReader.ScanningMode'.ScanMultiple
+        Text: ="Scan with phone"
+        TextColor: =RGBA(255, 255, 255, 1)
+        Visible: =false
+        Width: =Parent.Width
+        X: =0
+        Y: =Parent.Height - Self.Height 
+        ZIndex: =2
+
+    BarcodeContainer As groupContainer.verticalAutoLayoutContainer:
+        DropShadow: =DropShadow.None
+        Height: =Parent.Height - (Scan_Header.Height + BarcodeReader.Height + ScanInput.Height)
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutMode: =LayoutMode.Auto
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =0
+        RadiusTopLeft: =0
+        RadiusTopRight: =0
+        Width: =Parent.Width
+        Y: =Scan_Header.Height + ScanInput.Height + 1
+        ZIndex: =3
+
+        BarcodeTitleContainer As groupContainer.horizontalAutoLayoutContainer:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderThickness: =2
+            DropShadow: =DropShadow.None
+            FillPortions: =0
+            Height: =50
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutMinHeight: =112
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Width: =Parent.Width
+            Y: =20
+            ZIndex: =1
+
+            BedTitleLbl As label:
+                Align: =Align.Center
+                FontWeight: =FontWeight.Bold
+                Height: =70
+                LayoutMinHeight: =70
+                LayoutMinWidth: =560
+                Size: =21
+                Text: ="Bed"
+                Width: =Parent.Width / 3
+                ZIndex: =1
+
+            TitleSeparator1 As rectangle:
+                Height: =Parent.Height
+                Width: =1
+                ZIndex: =2
+
+            JobTitleLbl As label:
+                Align: =Align.Center
+                FontWeight: =FontWeight.Bold
+                Height: =70
+                LayoutMinHeight: =70
+                LayoutMinWidth: =560
+                Size: =21
+                Text: ="Job"
+                Width: =Parent.Width / 3
+                ZIndex: =3
+
+            TitleSeparator2 As rectangle:
+                Height: =Parent.Height
+                Width: =1
+                ZIndex: =4
+
+            TechTitleLbl As label:
+                Align: =Align.Center
+                FontWeight: =FontWeight.Bold
+                Height: =70
+                LayoutMinHeight: =70
+                LayoutMinWidth: =560
+                Size: =21
+                Text: ="Tech"
+                Width: =Parent.Width / 3
+                ZIndex: =5
+
+        BarcodeGallery As gallery.galleryVertical:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            BorderThickness: =2
+            DelayItemLoading: =true
+            FillPortions: =0
+            Height: =Parent.Height - BarcodeTitleContainer.Height
+            Items: =colScannedItems
+            Layout: =Layout.Vertical
+            LayoutMinHeight: =287
+            LayoutMinWidth: =320
+            LoadingSpinner: =LoadingSpinner.Data
+            TemplatePadding: =0
+            TemplateSize: =70
+            Width: =Parent.Width
+            ZIndex: =2
+
+            JobSeparatorRect As rectangle:
+                Height: =1
+                OnSelect: =Select(Parent)
+                Width: =Parent.TemplateWidth
+                Y: =Parent.TemplateHeight - Self.Height
+                ZIndex: =1
+
+            JobHighlightRect As rectangle:
+                Fill: =RGBA(56, 96, 178, 0.5)
+                Height: =Parent.TemplateHeight
+                OnSelect: =Select(Parent)
+                Visible: =ThisItem.IsSelected
+                Width: =Parent.TemplateWidth
+                ZIndex: =2
+
+            JobCoverRect As rectangle:
+                Fill: =RGBA(56, 96, 178, 0)
+                Height: =Parent.TemplateHeight
+                OnSelect: =Select(Parent)
+                Width: =Parent.TemplateWidth
+                ZIndex: =3
+
+            BarcodeValueContainer As groupContainer.horizontalAutoLayoutContainer:
+                DropShadow: =DropShadow.None
+                Height: =70
+                LayoutMode: =LayoutMode.Auto
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Width: =Parent.Width
+                ZIndex: =4
+
+                BedLbl As label:
+                    Align: =Align.Center
+                    Height: =70
+                    LayoutMinHeight: =70
+                    LayoutMinWidth: =560
+                    OnSelect: =
+                    Size: =21
+                    Text: =ThisItem.Bed
+                    Width: =Parent.Width / 3 
+                    X: =60
+                    ZIndex: =1
+
+                ValueSeparator1 As rectangle:
+                    Height: =Parent.Height
+                    Width: =1
+                    ZIndex: =2
+
+                JobLbl As label:
+                    Align: =Align.Center
+                    Height: =Parent.Height
+                    LayoutMinHeight: =70
+                    LayoutMinWidth: =560
+                    OnSelect: =
+                    Size: =20
+                    Text: |-
+                        =//ThisItem.Job
+                        ThisItem.Job
+                    Width: =Parent.Width / 3 
+                    ZIndex: =3
+
+                ValueSeparator2 As rectangle:
+                    Height: =Parent.Height
+                    Width: =1
+                    ZIndex: =4
+
+                TechLbl As label:
+                    Align: =Align.Center
+                    Height: =70
+                    LayoutMinHeight: =70
+                    LayoutMinWidth: =560
+                    OnSelect: =
+                    Size: =21
+                    Text: =ThisItem.Tech
+                    Width: =Parent.Width / 3 
+                    X: =40
+                    ZIndex: =5
+
+            BarcodeValueCoverRect As rectangle:
+                Fill: =RGBA(56, 96, 178, 0)
+                Height: =70
+                OnSelect: =Select(Parent)
+                Width: =Parent.TemplateWidth
+                ZIndex: =5
+
+            JobTrashIco As icon.Trash:
+                Height: =48
+                Icon: =Icon.Trash
+                OnSelect: |-
+                    =UpdateContext({ ShowDeleteContainer: true })
+                Visible: =!ShowDeleteContainer
+                Width: =48
+                X: =Parent.TemplateWidth - Self.Width - 10
+                Y: =(Parent.TemplateHeight - Self.Height) / 2
+                ZIndex: =6
+
+            DeleteContainer As groupContainer.manualLayoutContainer:
+                BorderColor: =RGBA(255, 255, 255, 1)
+                DropShadow: =DropShadow.None
+                Height: =Parent.TemplateHeight
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Visible: =ShowDeleteContainer
+                Width: =(JobTrashIco.Width * 2) + 10
+                X: =Parent.Width - Self.Width - 10
+                ZIndex: =7
+
+                DeleteCancelContainer As groupContainer.manualLayoutContainer:
+                    BorderThickness: =2
+                    DropShadow: =DropShadow.None
+                    Fill: =RGBA(240, 240, 240, 1)
+                    Height: =DeleteCancelIco.Height
+                    RadiusBottomLeft: =25
+                    RadiusBottomRight: =25
+                    RadiusTopLeft: =25
+                    RadiusTopRight: =25
+                    Width: =DeleteCancelIco.Width
+                    X: =Parent.Width / 2 + 2
+                    Y: =(Parent.Height - Self.Height)/2
+                    ZIndex: =1
+
+                    DeleteCancelIco As icon.Cancel:
+                        Color: =Color.Red
+                        FocusedBorderThickness: =0
+                        Height: =JobTrashIco.Height
+                        Icon: =Icon.Cancel
+                        OnSelect: |-
+                            =UpdateContext({ ShowDeleteContainer: false })
+                        PaddingBottom: =5
+                        PaddingLeft: =5
+                        PaddingRight: =5
+                        PaddingTop: =5
+                        Width: =JobTrashIco.Width
+                        X: =Parent.Width - Self.Width
+                        Y: =(Parent.Height - Self.Height) / 2
+                        ZIndex: =1
+
+                DeleteConfirmContainer As groupContainer.manualLayoutContainer:
+                    BorderThickness: =2
+                    DropShadow: =DropShadow.None
+                    Fill: =RGBA(240, 240, 240, 1)
+                    Height: =DeleteConfirmIco.Height
+                    RadiusBottomLeft: =25
+                    RadiusBottomRight: =25
+                    RadiusTopLeft: =25
+                    RadiusTopRight: =25
+                    Width: =DeleteConfirmIco.Width
+                    X: =2
+                    Y: =(Parent.Height - Self.Height)/2
+                    ZIndex: =2
+
+                    DeleteConfirmIco As icon.Check:
+                        Color: =Color.Green
+                        FocusedBorderThickness: =0
+                        Height: =JobTrashIco.Height
+                        Icon: =Icon.Check
+                        OnSelect: |-
+                            =Remove(colScannedItems, ThisItem);
+                            Patch(
+                                ProdScanMV, 
+                                LookUp(ProdScanMV, GUID = GUID(ThisItem.ScanGUID)),  // Find the record with matching GUID
+                                { Deleted: true }  // Update the 'Cancelled' field to true
+                            );
+                            
+                            UpdateContext({ ShowDeleteContainer: false })
+                        PaddingBottom: =5
+                        PaddingLeft: =5
+                        PaddingRight: =5
+                        PaddingTop: =5
+                        Width: =JobTrashIco.Width
+                        Y: =(Parent.Height - Self.Height) / 2
+                        ZIndex: =1
+
+    BarcodeCoverRect As rectangle:
+        Fill: =RGBA(56, 96, 178, 0)
+        Height: =BarcodeTitleContainer.Height
+        Width: =Parent.Width
+        Y: =BarcodeContainer.Y
+        ZIndex: =4
+
+    ScanInput As text:
+        Default: =""
+        FocusedBorderColor: =Color.Green
+        FocusedBorderThickness: =6
+        Height: =100
+        OnChange: |
+            =Switch(
+                Left(Self.Text, 1),
+            
+                // If the first character is "B", update the record with Bed and refresh ScannedTime
+                "B", 
+                If(
+                    IsBlank(Bed),
+                    
+                    Set(Bed, Self.Text);,
+            
+                    If(
+                        Bed <> Self.Text,
+                        // If bed variable is already set
+                        Set(Job, Blank());
+                        Set(Tech, Blank());
+                        Set(Bed, Self.Text);,
+            
+                        Notify("This bed is already scanned.", NotificationType.Warning);
+                    )
+                );
+            
+                Reset(Self);
+                SetFocus(Self);,
+            
+                "J",
+                // Ensure Bed has been scanned before updating Job
+                If(
+                    !IsBlank(Bed) && ScanTypeDropdown.Selected.Value = "MV",
+            
+                    // Set Job to the part before "T"
+                    Set(Job, Left(Self.Text, Find("T", Self.Text) - 1));
+            
+                    // Set Tech to the part after "T"
+                    Set(Tech, Mid(Self.Text, Find("T", Self.Text)));
+            
+                    Set(varScanGUID, GUID());
+            
+                    Collect(colScannedItems, {Bed: Bed, Job: Job, Tech: Tech, ScanGUID: varScanGUID});
+            
+                    // Use Patch to update Job, Tech, and ScannedTime in the matching record
+                    UpdateProdScanMV.Run(varScanGUID, Job, Bed, Tech, 0);
+            
+                    Reset(Self);
+                    SetFocus(Self);,
+            
+                    // If KP is selected
+                    ScanTypeDropdown.Selected.Value = "KP",
+            
+                    // Set Job to the part before "T"
+                    Set(Job, Left(Self.Text, Find("T", Self.Text) - 1));
+            
+                    // Set Tech to the part after "T"
+                    Set(Tech, Mid(Self.Text, Find("T", Self.Text)));
+            
+                    Set(varScanGUID, GUID());
+            
+                    Collect(colScannedItems, {Bed: Bed, Job: Job, Tech: Tech, ScanGUID: varScanGUID});
+            
+                    // Use Patch to update Job, Tech, and ScannedTime in the matching record
+                    UpdateProdScanMV.Run(varScanGUID, Job, Bed, Tech, 1);
+            
+                    Reset(Self);
+                    SetFocus(Self);,
+                    
+                    Notify("Please scan a bed first.", NotificationType.Warning);
+                )
+            );
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =0
+        RadiusTopLeft: =0
+        RadiusTopRight: =0
+        Size: =48
+        Width: =Parent.Width - 2
+        X: =1
+        Y: =Scan_Header.Height + 1
+        ZIndex: =5
+
+    Scan_Header As Header:
+        HeaderValue: =""
+        Height: =70
+        HomeScreen: ='Home Screen'
+        Width: =Parent.Width
+        ZIndex: =6
+
+    PCvsPhoneIco As icon.ComputerDesktop:
+        Color: =RGBA(240, 240, 240, 1)
+        Height: =Scan_Header.Height
+        Icon: =If(AppOnPC, Icon.Phone, Icon.ComputerDesktop)
+        OnSelect: =If(AppOnPC, Set(AppOnPC, false), Set(AppOnPC, true))
+        PaddingBottom: =5
+        PaddingLeft: =5
+        PaddingRight: =5
+        PaddingTop: =5
+        Width: =Scan_Header.Height
+        X: =Parent.Width - Self.Width
+        ZIndex: =7
+
+    ScanTypeDropdown As dropdown:
+        Height: =Scan_Header.Height - 10
+        Items: =["MV","KP"]
+        Size: =21
+        Width: =200
+        X: =(Parent.Width / 2) - (PCvsPhoneIco.Width / 2)
+        Y: =(Scan_Header.Height-Self.Height)/2
+        ZIndex: =8
+
+    ScanTypeLbl As label:
+        Align: =Align.Right
+        Color: =RGBA(240, 240, 240, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =ScanTypeDropdown.Height
+        Size: =21
+        Text: |-
+            ="Scan Type:"
+        Width: =175
+        X: =ScanTypeDropdown.X - Self.Width
+        Y: =ScanTypeDropdown.Y
+        ZIndex: =9
+

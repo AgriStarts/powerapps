@@ -1,0 +1,37 @@
+App As appinfo:
+    BackEnabled: =true
+    MinScreenHeight: =1080
+    MinScreenWidth: =If(AppOnPC, 1920, 640)
+    OnStart: |-
+        =// Items for navigation bar
+        ClearCollect(
+            NavTable,
+            Table(
+                {
+                    Title: "Home",
+                    Screen: 'Home Screen',
+                    Icon: Icon.Home
+                },
+                {
+                    Title: "Scan",
+                    Screen: 'Scan Screen',
+                    Icon: Icon.Scan
+                }
+            )
+        );
+        
+        // Blue agri-starts color
+        Set(AgriBlue, RGBA(43, 53, 131, 1));
+        
+        // Bool variable for changing app width and height
+        Set(AppOnPC, false);
+    StartScreen: ='Scan Screen'
+    Theme: =PowerAppsTheme
+
+    Host As hostControl.DefaultHostControlVariant:
+        OnCancel: =false
+        OnEdit: =false
+        OnNew: =false
+        OnSave: =false
+        OnView: =false
+

@@ -1,0 +1,97 @@
+{
+  "4d7d97a7-88bc-4a4c-b143-efed2af2e4aa": {
+    "appActions": [
+      "providers/PowerPlatform.Governance/Operations/Read",
+      "providers/PowerPlatform.Governance/Operations/Write"
+    ],
+    "connectionRef": {
+      "apiTier": "Premium",
+      "authenticationType": "sqlAuthentication",
+      "displayName": "SQL Server",
+      "executionRestrictions": {
+        "apiId": "/providers/microsoft.powerapps/apis/shared_sql",
+        "apiVer": 2,
+        "appVer": "3.24102.17",
+        "modifiedOn": "2024-10-31 14:13:28",
+        "policy": "{\"tabularActions\":{\"[dbo].[prodscanmv]\":[\"post\",\"patch\",\"get\"]},\"serviceActions\":[]}",
+        "version": 2
+      },
+      "gatewayObjectIdHint": "170b2334-0a4e-420f-87fe-a925f1308af7",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1715/1.0.1715.3906/sql/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sql",
+      "isOnPremiseConnection": true,
+      "parameterHints": {},
+      "parameterHintsV2": {},
+      "sharedConnectionId": "/providers/microsoft.powerapps/apis/shared_sql/connections/8472e13d186340a98d43ff6407070b7f",
+      "xrmConnectionReferenceLogicalName": "as_sharedsql_6349e70b7f"
+    },
+    "datasets": {
+      "serversql.agristarts.local,ASDB1": {
+        "dataSources": {
+          "ProdScanKP": {
+            "tableName": "[dbo].[ProdScanKP]"
+          },
+          "ProdScanMV": {
+            "tableName": "[dbo].[ProdScanMV]"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "ProdScanMV",
+      "ProdScanKP"
+    ],
+    "dependencies": {},
+    "dependents": [
+      "6ecbde6f-01e8-449e-9d21-15498ccfe564"
+    ],
+    "endpoints": [
+      "serversql.agristarts.local,ASDB1"
+    ],
+    "id": "4d7d97a7-88bc-4a4c-b143-efed2af2e4aa"
+  },
+  "6ecbde6f-01e8-449e-9d21-15498ccfe564": {
+    "appActions": [
+      "Run"
+    ],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1719/1.0.1719.3955/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "4d7d97a7-88bc-4a4c-b143-efed2af2e4aa": {
+          "value": "shared_sql_1"
+        },
+        "workflowDisplayName": {
+          "value": "Update ProdScanMV"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "e5ce05d3-e942-4a2f-8fea-2af2581568f2"
+        }
+      },
+      "parameterHintsV2": {
+        "shared_sql_1": {
+          "value": "4d7d97a7-88bc-4a4c-b143-efed2af2e4aa"
+        },
+        "workflowDisplayName": {
+          "value": "Update ProdScanMV"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "e5ce05d3-e942-4a2f-8fea-2af2581568f2"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "UpdateProdScanMV"
+    ],
+    "dependencies": {
+      "shared_sql_1": "4d7d97a7-88bc-4a4c-b143-efed2af2e4aa"
+    },
+    "dependents": [],
+    "id": "6ecbde6f-01e8-449e-9d21-15498ccfe564"
+  }
+}
