@@ -1,0 +1,82 @@
+LeftNavBar As CanvasComponent:
+    Default: ="Text"
+    Fill: =RGBA(43, 53, 131, 1)
+    Height: =Max(App.Height) - 100
+    MenuWidth: =If(expandNav, 250, 70)
+    NavItems: =NavTable
+    Width: =LeftNavBar.MenuWidth
+    X: =0
+    Y: =0
+    ZIndex: =2
+
+    LeftNavGal As gallery.galleryVertical:
+        DelayItemLoading: =true
+        Fill: =RGBA(43, 53, 131, 1)
+        Height: =Parent.Height - 50
+        Items: =Parent.NavItems
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        OnSelect: =Navigate(ThisItem.Screen)
+        ShowScrollbar: =false
+        TemplatePadding: =0
+        TemplateSize: =70
+        Width: =Parent.Width
+        Y: =50
+        ZIndex: =1
+
+        "LeftNavIco As icon.'3DPrinting'":
+            Color: =RGBA(240, 240, 240, 1)
+            Height: =Parent.TemplateHeight
+            HoverFill: =RGBA(180, 180, 180, 0.25)
+            Icon: =ThisItem.Icon
+            OnSelect: =Select(Parent);
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            Width: =70
+            ZIndex: =1
+
+        LeftNavLbl As label:
+            Color: =RGBA(240, 240, 240, 1)
+            Height: =Parent.TemplateHeight
+            OnSelect: =Select(Parent)
+            PaddingTop: =15
+            Size: =16
+            Text: =ThisItem.Title
+            Width: =Parent.TemplateWidth - LeftNavIco.Width - 5
+            X: =LeftNavIco.Width + 5
+            ZIndex: =2
+
+        LeftNavSelectedRect As rectangle:
+            Fill: =RGBA(170, 170, 170, 0.5)
+            Height: =Parent.TemplateHeight
+            OnSelect: |-
+                =Set(expandNav, false); 
+                Navigate(ThisItem.Screen)
+            Visible: =If(ThisItem.Title = LeftNavBar.Default, true, false)
+            Width: =Parent.TemplateWidth
+            ZIndex: =3
+
+    LeftNavHamburgerContainer As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.None
+        Height: =50
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =0
+        RadiusTopLeft: =0
+        RadiusTopRight: =0
+        Width: =Parent.Width
+        ZIndex: =3
+
+        LeftNavHamburgerIco As icon.Hamburger:
+            Color: =RGBA(240, 240, 240, 1)
+            Height: =Parent.Height
+            Icon: =Icon.Hamburger
+            OnSelect: =Set(expandNav, !expandNav)
+            PaddingBottom: =5
+            PaddingLeft: =5
+            PaddingRight: =5
+            PaddingTop: =5
+            Width: =70
+            ZIndex: =1
+

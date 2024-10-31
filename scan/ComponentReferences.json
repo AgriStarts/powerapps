@@ -1,0 +1,42 @@
+[
+  {
+    "HasLibraryLogicalName": true,
+    "InstanceCount": 1,
+    "LibraryId": "d1d8e861-3b41-440f-a7df-9ef921991d53",
+    "LibraryLogicalName": "cr91f_navigationandheaders_b8a8d",
+    "LibraryVersion": "2024-10-17T00:02:21Z",
+    "OriginalComponentDefinitionTemplateId": "122a2be109054b4cb3f94b707df5f715",
+    "RefusedSourceLastTimeSaved": "0001-01-01T00:00:00",
+    "SourceLastTimeSaved": "2024-10-17T00:02:23.071+00:00"
+  },
+  {
+    "HasLibraryLogicalName": true,
+    "InstanceCount": 1,
+    "LibraryId": "d1d8e861-3b41-440f-a7df-9ef921991d53",
+    "LibraryLogicalName": "cr91f_navigationandheaders_b8a8d",
+    "LibraryVersion": "2024-10-17T00:02:21Z",
+    "OriginalComponentDefinitionTemplateId": "ad973f17fb0d4da9afc04b0c2de3031a",
+    "RefusedSourceLastTimeSaved": "0001-01-01T00:00:00",
+    "SourceLastTimeSaved": "2024-10-17T00:02:23.071+00:00"
+  },
+  {
+    "HasLibraryLogicalName": true,
+    "InstanceCount": 2,
+    "LibraryId": "d1d8e861-3b41-440f-a7df-9ef921991d53",
+    "LibraryLogicalName": "cr91f_navigationandheaders_b8a8d",
+    "LibraryVersion": "2024-10-17T00:02:21Z",
+    "OriginalComponentDefinitionTemplateId": "da3e75408e81427c9253ff00dfee4901",
+    "RefusedSourceLastTimeSaved": "0001-01-01T00:00:00",
+    "SourceLastTimeSaved": "2024-10-17T00:02:23.071+00:00"
+  },
+  {
+    "HasLibraryLogicalName": true,
+    "InstanceCount": 1,
+    "LibraryId": "d1d8e861-3b41-440f-a7df-9ef921991d53",
+    "LibraryLogicalName": "cr91f_navigationandheaders_b8a8d",
+    "LibraryVersion": "2024-10-17T00:02:21Z",
+    "OriginalComponentDefinitionTemplateId": "fd49b93110cd472c9c40938ca00ae64b",
+    "RefusedSourceLastTimeSaved": "0001-01-01T00:00:00",
+    "SourceLastTimeSaved": "2024-10-17T00:02:23.071+00:00"
+  }
+]

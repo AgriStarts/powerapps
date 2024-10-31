@@ -1,0 +1,29 @@
+Footer As CanvasComponent:
+    Fill: =RGBA(0, 0, 0, 0)
+    Height: =50
+    Width: =Max(App.Width)
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    FooterRect As rectangle:
+        Fill: =RGBA(43, 53, 131, 1)
+        Height: =Parent.Height
+        Width: =Parent.Width
+        ZIndex: =1
+
+    FooterVersionLbl As label:
+        Color: =RGBA(240, 240, 240, 1)
+        Height: =Parent.Height
+        PaddingLeft: =15
+        Size: =21
+        Text: ="Version 1.0.0"
+        Width: =Parent.Width
+        ZIndex: =2
+
+    FooterCoverRect As rectangle:
+        Fill: =RGBA(56, 96, 178, 0)
+        Height: =Parent.Height
+        Width: =Parent.Width
+        ZIndex: =3
+
