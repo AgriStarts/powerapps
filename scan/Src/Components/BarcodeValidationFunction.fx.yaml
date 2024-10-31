@@ -23,7 +23,7 @@ BarcodeValidationFunction As CanvasComponent:
                 StartsWith(BarcodeValidationFunction.BarcodeInput, "J") && IsMatch(BarcodeValidationFunction.BarcodeInput, "^J[0-9]{7}T[0-9]{4}$"),
                     "Job & Tech Code",
             
-                Blank(),
+                Or("",Blank()),
                     "-",
                 
                 // If neither pattern matches

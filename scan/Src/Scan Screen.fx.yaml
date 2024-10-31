@@ -388,10 +388,10 @@
             =Set(CodeType, BarcodeValidationFunction_1.ValidationResult);
             
             Switch(
-                Left(Self.Text,1),
+                CodeType,
                 
-                "B",
-                // If the first character is "B" and lenght is 6, update the record with Bed and refresh ScannedTime
+                "Bed Code",
+                // If its a bed code, update the record with Bed and refresh ScannedTime
             
                 If(
                     IsBlank(Bed),
@@ -412,7 +412,7 @@
                 Reset(Self);
                 SetFocus(Self),
             
-                "J",
+                "Job & Tech Code",
                 // Ensure Bed has been scanned before updating Job
                 If(
                     !IsBlank(Bed) && ScanTypeDropdown.Selected.Value = "MV",
