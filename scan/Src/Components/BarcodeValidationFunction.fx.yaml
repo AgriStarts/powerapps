@@ -1,16 +1,17 @@
 BarcodeValidationFunction As CanvasComponent:
     BarcodeInput: ="Text"
     Fill: =RGBA(0, 0, 0, 0)
-    Height: =640
+    Height: =50
     ValidationResult: |
         =Label3.Text
-    Width: =640
+    Width: =200
     X: =0
     Y: =0
     ZIndex: =1
 
     Label3 As label:
-        Height: =70
+        Align: =Align.Center
+        Height: =50
         Size: =21
         Text: |
             =If(
@@ -21,12 +22,13 @@ BarcodeValidationFunction As CanvasComponent:
                 // Job and Tech Code: "J" + 7 digits + "T" + 4 digits
                 StartsWith(BarcodeValidationFunction.BarcodeInput, "J") && IsMatch(BarcodeValidationFunction.BarcodeInput, "^J[0-9]{7}T[0-9]{4}$"),
                     "Job and Tech Code",
+            
+                Blank(),
+                    "-",
                 
                 // If neither pattern matches
                     "Invalid Code"
             )
-        Width: =560
-        X: =40
-        Y: =40
+        Width: =200
         ZIndex: =1
 

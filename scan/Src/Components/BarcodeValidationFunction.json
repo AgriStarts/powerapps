@@ -35,11 +35,39 @@
           "HoverFill",
           "Font",
           "FontWeight",
-          "Align",
+          {
+            "AFDDataSourceName": "",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "InvariantPropertyName": "Align",
+            "IsLockable": false,
+            "NameMapSourceSchema": "?"
+          },
           "VerticalAlign",
-          "X",
-          "Y",
-          "Width",
+          {
+            "AFDDataSourceName": "",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "InvariantPropertyName": "X",
+            "IsLockable": false,
+            "NameMapSourceSchema": "?"
+          },
+          {
+            "AFDDataSourceName": "",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "InvariantPropertyName": "Y",
+            "IsLockable": false,
+            "NameMapSourceSchema": "?"
+          },
+          {
+            "AFDDataSourceName": "",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "InvariantPropertyName": "Width",
+            "IsLockable": false,
+            "NameMapSourceSchema": "?"
+          },
           "Height",
           "DisplayMode",
           "ZIndex",
@@ -69,7 +97,7 @@
         "OptimizeForDevices": "Off",
         "Parent": "BarcodeValidationFunction",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 80,
+        "PublishOrderIndex": 81,
         "Rules": [
           {
             "Category": "Data",
@@ -79,7 +107,7 @@
           },
           {
             "Category": "Data",
-            "InvariantScript": "If(\r\n    // Bed Code: \"B\" + letter + 4 digits\r\n    StartsWith(BarcodeValidationFunction.BarcodeInput, \"B\") && IsMatch(BarcodeValidationFunction.BarcodeInput, \"^B[A-Za-z][0-9]{4}$\"),\r\n        \"Bed Code\",\r\n    \r\n    // Job and Tech Code: \"J\" + 7 digits + \"T\" + 4 digits\r\n    StartsWith(BarcodeValidationFunction.BarcodeInput, \"J\") && IsMatch(BarcodeValidationFunction.BarcodeInput, \"^J[0-9]{7}T[0-9]{4}$\"),\r\n        \"Job and Tech Code\",\r\n    \r\n    // If neither pattern matches\r\n        \"Invalid Code\"\r\n)\r\n",
+            "InvariantScript": "If(\r\n    // Bed Code: \"B\" + letter + 4 digits\r\n    StartsWith(BarcodeValidationFunction.BarcodeInput, \"B\") && IsMatch(BarcodeValidationFunction.BarcodeInput, \"^B[A-Za-z][0-9]{4}$\"),\r\n        \"Bed Code\",\r\n    \r\n    // Job and Tech Code: \"J\" + 7 digits + \"T\" + 4 digits\r\n    StartsWith(BarcodeValidationFunction.BarcodeInput, \"J\") && IsMatch(BarcodeValidationFunction.BarcodeInput, \"^J[0-9]{7}T[0-9]{4}$\"),\r\n        \"Job and Tech Code\",\r\n\r\n    Blank(),\r\n        \"-\",\r\n    \r\n    // If neither pattern matches\r\n        \"Invalid Code\"\r\n)\r\n",
             "Property": "Text",
             "RuleProviderType": "User"
           },
@@ -193,7 +221,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "Align.Left",
+            "InvariantScript": "Align.Center",
             "Property": "Align",
             "RuleProviderType": "Unknown"
           },
@@ -205,25 +233,25 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "40",
+            "InvariantScript": "0",
             "Property": "X",
             "RuleProviderType": "Unknown"
           },
           {
             "Category": "Design",
-            "InvariantScript": "40",
+            "InvariantScript": "0",
             "Property": "Y",
             "RuleProviderType": "Unknown"
           },
           {
             "Category": "Design",
-            "InvariantScript": "560",
+            "InvariantScript": "200",
             "Property": "Width",
             "RuleProviderType": "Unknown"
           },
           {
             "Category": "Design",
-            "InvariantScript": "70",
+            "InvariantScript": "50",
             "Property": "Height",
             "RuleProviderType": "Unknown"
           },
@@ -325,8 +353,22 @@
     ],
     "ControlPropertyState": [
       "Fill",
-      "Height",
-      "Width",
+      {
+        "AFDDataSourceName": "",
+        "AutoRuleBindingEnabled": false,
+        "AutoRuleBindingString": "",
+        "InvariantPropertyName": "Height",
+        "IsLockable": false,
+        "NameMapSourceSchema": "?"
+      },
+      {
+        "AFDDataSourceName": "",
+        "AutoRuleBindingEnabled": false,
+        "AutoRuleBindingString": "",
+        "InvariantPropertyName": "Width",
+        "IsLockable": false,
+        "NameMapSourceSchema": "?"
+      },
       "X",
       "Y",
       "ZIndex",
@@ -340,7 +382,7 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638660029063821141",
+    "LastModifiedTimestamp": "638660035795554336",
     "Name": "BarcodeValidationFunction",
     "Rules": [
       {
@@ -363,13 +405,13 @@
       },
       {
         "Category": "Design",
-        "InvariantScript": "640",
+        "InvariantScript": "50",
         "Property": "Height",
         "RuleProviderType": "System"
       },
       {
         "Category": "Design",
-        "InvariantScript": "640",
+        "InvariantScript": "200",
         "Property": "Width",
         "RuleProviderType": "System"
       },
@@ -430,7 +472,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638660029063821141",
+  "LastModifiedTimestamp": "638660035795554336",
   "Name": "9f26c482ca9c456fb6f8acb5c2adab97",
   "OverridableProperties": {},
   "Version": "1.0"

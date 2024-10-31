@@ -385,9 +385,12 @@
         HoverColor: =Self.Color
         HoverFill: =RGBA(255, 255, 255, 1)
         OnChange: |
-            =Set(BarcodeType, BarcodeValidationFunction_1.ValidationResult)
+            =Set(CodeType, BarcodeValidationFunction_1.ValidationResult);
             
-            If("B" = "B",
+            Switch(
+                Left(Self.Text,1),
+                
+                "B",
                 // If the first character is "B" and lenght is 6, update the record with Bed and refresh ScannedTime
             
                 If(
@@ -404,14 +407,12 @@
             
                         Notify("This bed is already scanned.", NotificationType.Warning)
                     )
-                )
-            ); 
+                ); 
             
                 Reset(Self);
-                SetFocus(Self);
+                SetFocus(Self),
             
-            If(
-                Left(Self.Text, 1) = "J",
+                "J",
                 // Ensure Bed has been scanned before updating Job
                 If(
                     !IsBlank(Bed) && ScanTypeDropdown.Selected.Value = "MV",
@@ -551,10 +552,8 @@
 
     BarcodeValidationFunction_1 As BarcodeValidationFunction:
         BarcodeInput: =ScanInput.Text
-        Height: =65
-        Visible: =false
-        Width: =77
-        X: =159
-        Y: =88
+        Visible: =true
+        X: =439
+        Y: =171
         ZIndex: =12
 
