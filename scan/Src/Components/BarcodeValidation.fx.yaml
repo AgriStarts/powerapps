@@ -1,5 +1,5 @@
 BarcodeValidation As CanvasComponent:
-    BarcodeInput: =
+    BarcodeInput: =""
     Fill: =RGBA(0, 0, 0, 0)
     Height: =50
     OnReset: =

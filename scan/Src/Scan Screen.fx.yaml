@@ -4,6 +4,7 @@
         Set(Job, Blank());
         Set(Tech, Blank());
         Reset(ScanInputField);
+        Reset(BarcodeValidationFunction_1);
         SetFocus(ScanInputField);
 
     SessionBtn As button:
