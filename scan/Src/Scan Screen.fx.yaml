@@ -11,8 +11,7 @@
         Fill: =AgriBlue
         Height: =80
         OnSelect: |-
-            =Set(varScanGUID, Blank());
-            Set(Bed, Blank());
+            =Set(Bed, Blank());
             Set(Tech, Blank());
             Set(Job, Blank());
             Clear(colScannedItems);
@@ -385,87 +384,12 @@
         Height: =100
         HoverColor: =Self.Color
         HoverFill: =RGBA(255, 255, 255, 1)
-        OnChange: |
-            =Set(CodeType, BarcodeValidationFunction_1.ValidationResult);
-            
-            Set(SubmittedBarcode, Trim(ScanInputField.Text));
-            Reset(ScanInputField);
-            
-            Set(BarcodeValidationFunction_1, 1);
-            
-            
-            
-            
-            Switch(
-                CodeType,
-                
-                "Bed Code",
-                // If its a bed code, update the record with Bed and refresh ScannedTime
-            
-                If(
-                    IsBlank(Bed),
-            
-                    Set(Bed, Self.Text),
-            
-                    If(
-                        Bed <> Self.Text,
-                        // If bed variable is already set
-                        Set(Job, Blank());
-                        Set(Tech, Blank());
-                        Set(Bed, Self.Text),
-            
-                        Notify("This bed is already scanned.", NotificationType.Warning)
-                    )
-                ); 
-            
-                Reset(Self);
-                SetFocus(Self),
-            
-                "Job & Tech Code",
-                // Ensure Bed has been scanned before updating Job
-                If(
-                    !IsBlank(Bed) && ScanTypeDropdown.Selected.Value = "MV",
-            
-                    // Set Job to the part before "T"
-                    Set(Job, Left(Self.Text, Find("T", Self.Text) - 1));
-                    If(Len(Job) <> 8, UpdateContext({invalid: true})); 
-            
-                    // Set Tech to the part after "T"
-                    Set(Tech, Mid(Self.Text, Find("T", Self.Text)));
-            
-                    Set(varScanGUID, GUID());
-            
-                    Collect(colScannedItems, {Bed: Bed, Job: Job, Tech: Tech, ScanGUID: varScanGUID});
-            
-                    // Use Patch to update Job, Tech, and ScannedTime in the matching record
-                    UpdateProdScanMV.Run(varScanGUID, Job, Bed, Tech, 0);
-            
-                    Reset(Self);
-                    SetFocus(Self);,
-            
-                    // If KP is selected
-                    ScanTypeDropdown.Selected.Value = "KP",
-            
-                    // Set Job to the part before "T"
-                    Set(Job, Left(Self.Text, Find("T", Self.Text) - 1));
-            
-                    // Set Tech to the part after "T"
-                    Set(Tech, Mid(Self.Text, Find("T", Self.Text)));
-            
-                    Set(varScanGUID, GUID());
-            
-                    Collect(colScannedItems, {Bed: Bed, Job: Job, Tech: Tech, ScanGUID: varScanGUID});
-            
-                    // Use Patch to update Job, Tech, and ScannedTime in the matching record
-                    UpdateProdScanMV.Run(varScanGUID, Job, Bed, Tech, 1);
-            
-                    Reset(Self);
-                    SetFocus(Self);,
-            
-                    
-                    Notify("Please scan a bed first.", NotificationType.Warning);
-                )
+        OnChange: |-
+            =Set(
+                SubmittedBarcode,
+                Trim(ScanInputField.Text)
             );
+            Reset(ScanInputField)
         RadiusBottomLeft: =0
         RadiusBottomRight: =0
         RadiusTopLeft: =0
@@ -560,7 +484,7 @@
             ZIndex: =2
 
     BarcodeValidationFunction_1 As BarcodeValidation:
-        BarcodeInput: =ScanInputField.Text
+        BarcodeInput: =SubmittedBarcode
         Visible: =true
         X: =439
         Y: =171
