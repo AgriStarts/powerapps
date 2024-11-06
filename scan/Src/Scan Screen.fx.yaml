@@ -485,6 +485,7 @@
 
     BarcodeValidationFunction_1 As BarcodeValidation:
         BarcodeInput: =SubmittedBarcode
+        OnReset: =Set(BarcodeInput, BarcodeValidationFunction_1.BarcodeInput)
         Visible: =true
         X: =439
         Y: =171
