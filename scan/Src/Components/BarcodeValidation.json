@@ -107,7 +107,7 @@
           },
           {
             "Category": "Data",
-            "InvariantScript": "If(\n    // Bed Code: \"B\" + letter + 4 digits\n    StartsWith(InputText \"B\") && \n    IsMatch(InputText, \"^B[A-Za-z][0-9]{4}$\"),\n        \"Bed Code\",\n    \n    // Job and Tech Code: \"J\" + 7 digits + \"T\" + 4 digits\n    StartsWith(InputText, \"J\") && \n    IsMatch(InputText, \"^J[0-9]{7}T[0-9]{4}$\"),\n        \"Job & Tech Code\",\n    \n    // Check if the input is blank\n    IsBlank(InputText),\n        \"-\",\n    \n    // If neither pattern matches\n        \"Invalid Code\"\n)",
+            "InvariantScript": "If(\n    // Bed Code: \"B\" + letter + 4 digits\n    StartsWith(ResultLabel, \"B\") && \n    IsMatch(InputText, \"^B[A-Za-z][0-9]{4}$\"),\n        \"Bed Code\",\n    \n    // Job and Tech Code: \"J\" + 7 digits + \"T\" + 4 digits\n    StartsWith(InputText, \"J\") && \n    IsMatch(InputText, \"^J[0-9]{7}T[0-9]{4}$\"),\n        \"Job & Tech Code\",\n    \n    // Check if the input is blank\n    IsBlank(InputText),\n        \"-\",\n    \n    // If neither pattern matches\n        \"Invalid Code\"\n)",
             "Property": "Text",
             "RuleProviderType": "User"
           },
@@ -372,22 +372,15 @@
       "X",
       "Y",
       "ZIndex",
-      {
-        "AFDDataSourceName": "",
-        "AutoRuleBindingEnabled": false,
-        "AutoRuleBindingString": "\"Text\"",
-        "InvariantPropertyName": "InputText",
-        "IsLockable": false,
-        "NameMapSourceSchema": "?"
-      }
+      "BarcodeInput"
     ],
-    "LastModifiedTimestamp": "638665198863152022",
+    "LastModifiedTimestamp": "638665200911305739",
     "Name": "BarcodeValidation",
     "Rules": [
       {
         "Category": "Data",
-        "InvariantScript": "SubmittedBarcode",
-        "Property": "InputText",
+        "InvariantScript": "\"Text\"",
+        "Property": "BarcodeInput",
         "RuleProviderType": "System"
       },
       {
@@ -440,9 +433,9 @@
   "CustomProperties": [
     {
       "Category": 0,
-      "DisplayName": "InputText",
+      "DisplayName": "BarcodeInput",
       "Hidden": false,
-      "Name": "InputText",
+      "Name": "BarcodeInput",
       "PropertyDataTypeKey": "String",
       "Tooltip": "A custom property",
       "Type": "{\"Version\":\"1.343\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}"
@@ -456,7 +449,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638665198863152022",
+  "LastModifiedTimestamp": "638665200911305739",
   "Name": "9f26c482ca9c456fb6f8acb5c2adab97",
   "OverridableProperties": {},
   "Version": "1.0"
