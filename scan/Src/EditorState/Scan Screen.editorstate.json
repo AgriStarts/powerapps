@@ -1289,7 +1289,6 @@
         "X",
         "Y",
         "ZIndex",
-        "ValidationResult",
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
@@ -1319,11 +1318,6 @@
       "ParentIndex": 6,
       "PersistMetaDataIDKey": false,
       "Properties": [
-        {
-          "Category": "Data",
-          "PropertyName": "ValidationResult",
-          "RuleProviderType": "System"
-        },
         {
           "Category": "Data",
           "PropertyName": "InputText",

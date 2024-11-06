@@ -107,7 +107,7 @@
           },
           {
             "Category": "Data",
-            "InvariantScript": "If(\n    // Bed Code: \"B\" + letter + 4 digits\n    StartsWith(, \"B\") && \n    IsMatch(InputText, \"^B[A-Za-z][0-9]{4}$\"),\n        \"Bed Code\",\n    \n    // Job and Tech Code: \"J\" + 7 digits + \"T\" + 4 digits\n    StartsWith(InputText, \"J\") && \n    IsMatch(InputText, \"^J[0-9]{7}T[0-9]{4}$\"),\n        \"Job & Tech Code\",\n    \n    // Check if the input is blank\n    IsBlank(InputText),\n        \"-\",\n    \n    // If neither pattern matches\n        \"Invalid Code\"\n)",
+            "InvariantScript": "If(\n    // Bed Code: \"B\" + letter + 4 digits\n    StartsWith(InputText \"B\") && \n    IsMatch(InputText, \"^B[A-Za-z][0-9]{4}$\"),\n        \"Bed Code\",\n    \n    // Job and Tech Code: \"J\" + 7 digits + \"T\" + 4 digits\n    StartsWith(InputText, \"J\") && \n    IsMatch(InputText, \"^J[0-9]{7}T[0-9]{4}$\"),\n        \"Job & Tech Code\",\n    \n    // Check if the input is blank\n    IsBlank(InputText),\n        \"-\",\n    \n    // If neither pattern matches\n        \"Invalid Code\"\n)",
             "Property": "Text",
             "RuleProviderType": "User"
           },
@@ -372,7 +372,6 @@
       "X",
       "Y",
       "ZIndex",
-      "ValidationResult",
       {
         "AFDDataSourceName": "",
         "AutoRuleBindingEnabled": false,
@@ -382,15 +381,9 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638665197531932787",
+    "LastModifiedTimestamp": "638665198863152022",
     "Name": "BarcodeValidation",
     "Rules": [
-      {
-        "Category": "Data",
-        "InvariantScript": "ResultLabel.Text\n",
-        "Property": "ValidationResult",
-        "RuleProviderType": "System"
-      },
       {
         "Category": "Data",
         "InvariantScript": "SubmittedBarcode",
@@ -447,15 +440,6 @@
   "CustomProperties": [
     {
       "Category": 0,
-      "DisplayName": "ValidationResult",
-      "Hidden": true,
-      "Name": "ValidationResult",
-      "PropertyDataTypeKey": "String",
-      "Tooltip": "ValidationResult",
-      "Type": "{\"Version\":\"1.343\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}"
-    },
-    {
-      "Category": 0,
       "DisplayName": "InputText",
       "Hidden": false,
       "Name": "InputText",
@@ -472,7 +456,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638665197531932787",
+  "LastModifiedTimestamp": "638665198863152022",
   "Name": "9f26c482ca9c456fb6f8acb5c2adab97",
   "OverridableProperties": {},
   "Version": "1.0"
