@@ -107,7 +107,7 @@
           },
           {
             "Category": "Data",
-            "InvariantScript": "If(\n    // Bed Code: \"B\" + letter + 4 digits\n    StartsWith(BarcodeInput, \"B\") && \n    IsMatch(BarcodeInput, \"^B[A-Za-z][0-9]{4}$\"),\n        \"Bed Code\",\n    \n    // Job and Tech Code: \"J\" + 7 digits + \"T\" + 4 digits\n    StartsWith(BarcodeInput, \"J\") && \n    IsMatch(BarcodeInput, \"^J[0-9]{7}T[0-9]{4}$\"),\n        \"Job & Tech Code\",\n    \n    // Check if the input is blank or only whitespace\n    Len(Trim(BarcodeInput)) = 0,\n        \"-\",\n    \n    // If neither pattern matches\n        \"Invalid Code\"\n)\n",
+            "InvariantScript": "If(\n    // Bed Code: \"B\" + letter + 4 digits\n    StartsWith(BarcodeValidation.BarcodeInput, \"B\") && \n    IsMatch(BarcodeValidation.BarcodeInput, \"^B[A-Za-z][0-9]{4}$\"),\n        \"Bed Code\",\n    \n    // Job and Tech Code: \"J\" + 7 digits + \"T\" + 4 digits\n    StartsWith(BarcodeValidation.BarcodeInput, \"J\") && \n    IsMatch(BarcodeValidation.BarcodeInput, \"^J[0-9]{7}T[0-9]{4}$\"),\n        \"Job & Tech Code\",\n    \n    // Check if the input is blank or only whitespace\n    Len(Trim(BarcodeValidation.BarcodeInput)) = 0,\n        \"-\",\n    \n    // If neither pattern matches\n        \"Invalid Code\"\n)",
             "Property": "Text",
             "RuleProviderType": "User"
           },
@@ -372,14 +372,7 @@
       "X",
       "Y",
       "ZIndex",
-      {
-        "AFDDataSourceName": "",
-        "AutoRuleBindingEnabled": false,
-        "AutoRuleBindingString": "",
-        "InvariantPropertyName": "OnReset",
-        "IsLockable": false,
-        "NameMapSourceSchema": "?"
-      },
+      "OnReset",
       {
         "AFDDataSourceName": "",
         "AutoRuleBindingEnabled": false,
@@ -388,16 +381,9 @@
         "IsLockable": false,
         "NameMapSourceSchema": "?"
       },
-      {
-        "AFDDataSourceName": "",
-        "AutoRuleBindingEnabled": false,
-        "AutoRuleBindingString": "",
-        "InvariantPropertyName": "BarcodeInput",
-        "IsLockable": false,
-        "NameMapSourceSchema": "?"
-      }
+      "BarcodeInput"
     ],
-    "LastModifiedTimestamp": "638665235090818645",
+    "LastModifiedTimestamp": "638665244826980667",
     "Name": "BarcodeValidation",
     "Rules": [
       {
@@ -408,7 +394,7 @@
       },
       {
         "Category": "Data",
-        "InvariantScript": "\"\"",
+        "InvariantScript": "",
         "Property": "BarcodeInput",
         "RuleProviderType": "System"
       },
@@ -450,7 +436,7 @@
       },
       {
         "Category": "Behavior",
-        "InvariantScript": "Set(BarcodeInput, BarcodeValidation.BarcodeInput)",
+        "InvariantScript": "",
         "Property": "OnReset",
         "RuleProviderType": "System"
       }
@@ -493,7 +479,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638665235090818645",
+  "LastModifiedTimestamp": "638665244826980667",
   "Name": "9f26c482ca9c456fb6f8acb5c2adab97",
   "OverridableProperties": {},
   "Version": "1.0"
