@@ -1,29 +1,32 @@
-BarcodeValidationFunction As CanvasComponent:
+BarcodeValidation As CanvasComponent:
     BarcodeInput: ="Text"
     Fill: =RGBA(0, 0, 0, 0)
     Height: =50
     ValidationResult: |
-        =Label3.Text
+        =ResultLabel.Text
     Width: =200
     X: =0
     Y: =0
     ZIndex: =1
 
-    Label3 As label:
+    ResultLabel As label:
         Align: =Align.Center
         Height: =50
         Size: =21
         Text: |-
             =If(
                 // Bed Code: "B" + letter + 4 digits
-                StartsWith(BarcodeValidationFunction.BarcodeInput, "B") && IsMatch(BarcodeValidationFunction.BarcodeInput, "^B[A-Za-z][0-9]{4}$"),
+                StartsWith(SubmittedBarcode, "B") && 
+                IsMatch(SubmittedBarcode, "^B[A-Za-z][0-9]{4}$"),
                     "Bed Code",
                 
                 // Job and Tech Code: "J" + 7 digits + "T" + 4 digits
-                StartsWith(BarcodeValidationFunction.BarcodeInput, "J") && IsMatch(BarcodeValidationFunction.BarcodeInput, "^J[0-9]{7}T[0-9]{4}$"),
+                StartsWith(SubmittedBarcode, "J") && 
+                IsMatch(SubmittedBarcode, "^J[0-9]{7}T[0-9]{4}$"),
                     "Job & Tech Code",
-            
-                IsBlank(BarcodeValidationFunction.BarcodeInput),
+                
+                // Check if the input is blank
+                IsBlank(SubmittedBarcode),
                     "-",
                 
                 // If neither pattern matches

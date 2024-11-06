@@ -104,7 +104,7 @@
       "zeroalltabindexes": true
     },
     "Author": "",
-    "BindingErrorCount": 0,
+    "BindingErrorCount": 8,
     "ContainsThirdPartyPcfControls": false,
     "DefaultConnectedDataSourceMaxGetRowsCount": 500,
     "DocumentAppType": "Phone",
@@ -121,13 +121,13 @@
     "InstrumentationKey": "",
     "LocalDatabaseReferences": "",
     "ManualOfflineProfileId": "",
-    "Name": "Scanner",
+    "Name": "ScannerRaw",
     "OriginatingVersion": "1.343",
     "ParserErrorCount": 0,
     "ShowStatusBar": false
   },
   "PublishInfo": {
-    "AppName": "Scanner",
+    "AppName": "ScannerRaw",
     "BackgroundColor": "rgba(0, 18, 107, 1)",
     "IconColor": "RGBA(255,255,255,1)",
     "IconName": "ViewList",

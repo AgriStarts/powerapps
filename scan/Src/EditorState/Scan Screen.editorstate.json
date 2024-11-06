@@ -1328,7 +1328,7 @@
         {
           "Category": "Data",
           "PropertyName": "ValidationResult",
-          "RuleProviderType": "System"
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",

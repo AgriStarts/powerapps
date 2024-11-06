@@ -12,7 +12,7 @@
         "apiId": "/providers/microsoft.powerapps/apis/shared_sql",
         "apiVer": 2,
         "appVer": "3.24102.17",
-        "modifiedOn": "2024-10-31 20:42:30",
+        "modifiedOn": "2024-11-06 18:04:39",
         "policy": "{\"tabularActions\":{\"[dbo].[prodscanmv]\":[\"post\",\"patch\",\"get\"]},\"serviceActions\":[]}",
         "version": 2
       },
@@ -43,19 +43,50 @@
     ],
     "dependencies": {},
     "dependents": [
-      "6ecbde6f-01e8-449e-9d21-15498ccfe564"
+      "ec46ca98-546f-4ef8-8b1f-f6b4a8e3d515",
+      "e30c212a-1d3c-4cda-a527-d61277bcf651"
     ],
     "endpoints": [
       "serversql.agristarts.local,ASDB1"
     ],
     "id": "4d7d97a7-88bc-4a4c-b143-efed2af2e4aa"
   },
-  "6ecbde6f-01e8-449e-9d21-15498ccfe564": {
-    "appActions": [
-      "Run"
-    ],
+  "e30c212a-1d3c-4cda-a527-d61277bcf651": {
     "connectionRef": {
-      "apiTier": "Standard",
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1719/1.0.1719.3955/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "workflowDisplayName": {
+          "value": "InsertRawScan"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "b6ac710b-fb27-4261-a1e1-0806365a0241"
+        }
+      },
+      "parameterHintsV2": {
+        "workflowDisplayName": {
+          "value": "InsertRawScan"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "b6ac710b-fb27-4261-a1e1-0806365a0241"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "InsertRawScan"
+    ],
+    "dependencies": {
+      "shared_sql": "4d7d97a7-88bc-4a4c-b143-efed2af2e4aa"
+    },
+    "dependents": [],
+    "id": "e30c212a-1d3c-4cda-a527-d61277bcf651"
+  },
+  "ec46ca98-546f-4ef8-8b1f-f6b4a8e3d515": {
+    "connectionRef": {
       "displayName": "Logic flows",
       "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1719/1.0.1719.3955/logicflows/icon.png",
       "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
@@ -92,6 +123,6 @@
       "shared_sql_1": "4d7d97a7-88bc-4a4c-b143-efed2af2e4aa"
     },
     "dependents": [],
-    "id": "6ecbde6f-01e8-449e-9d21-15498ccfe564"
+    "id": "ec46ca98-546f-4ef8-8b1f-f6b4a8e3d515"
   }
 }
