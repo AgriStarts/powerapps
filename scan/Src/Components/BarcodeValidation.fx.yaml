@@ -2,7 +2,7 @@ BarcodeValidation As CanvasComponent:
     BarcodeInput: =""
     Fill: =RGBA(0, 0, 0, 0)
     Height: =50
-    OnReset: =BarcodeValidation.ValidationResult
+    OnReset: =Reset(Self)
     ValidationResult: =ResultLabel.Text
     Width: =200
     X: =0
