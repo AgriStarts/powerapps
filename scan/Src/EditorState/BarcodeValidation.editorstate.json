@@ -23,12 +23,12 @@
         "X",
         "Y",
         "ZIndex",
-        "BarcodeInput",
+        "ValidationResult",
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
           "AutoRuleBindingString": "\"Text\"",
-          "InvariantPropertyName": "ValidationResult",
+          "InvariantPropertyName": "InputText",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         }
@@ -48,12 +48,12 @@
       "Properties": [
         {
           "Category": "Data",
-          "PropertyName": "BarcodeInput",
+          "PropertyName": "ValidationResult",
           "RuleProviderType": "System"
         },
         {
           "Category": "Data",
-          "PropertyName": "ValidationResult",
+          "PropertyName": "InputText",
           "RuleProviderType": "System"
         },
         {

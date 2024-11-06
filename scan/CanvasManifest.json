@@ -123,7 +123,7 @@
     "ManualOfflineProfileId": "",
     "Name": "ScannerRaw",
     "OriginatingVersion": "1.343",
-    "ParserErrorCount": 0,
+    "ParserErrorCount": 1,
     "ShowStatusBar": false
   },
   "PublishInfo": {

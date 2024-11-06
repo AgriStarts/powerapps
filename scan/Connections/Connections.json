@@ -12,7 +12,7 @@
         "apiId": "/providers/microsoft.powerapps/apis/shared_sql",
         "apiVer": 2,
         "appVer": "3.24102.17",
-        "modifiedOn": "2024-11-06 18:04:39",
+        "modifiedOn": "2024-11-06 19:36:48",
         "policy": "{\"tabularActions\":{\"[dbo].[prodscanmv]\":[\"post\",\"patch\",\"get\"]},\"serviceActions\":[]}",
         "version": 2
       },
@@ -57,6 +57,9 @@
       "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1719/1.0.1719.3955/logicflows/icon.png",
       "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
       "parameterHints": {
+        "4d7d97a7-88bc-4a4c-b143-efed2af2e4aa": {
+          "value": "shared_sql"
+        },
         "workflowDisplayName": {
           "value": "InsertRawScan"
         },
@@ -66,6 +69,9 @@
         }
       },
       "parameterHintsV2": {
+        "shared_sql": {
+          "value": "4d7d97a7-88bc-4a4c-b143-efed2af2e4aa"
+        },
         "workflowDisplayName": {
           "value": "InsertRawScan"
         },

@@ -25,6 +25,8 @@ App As appinfo:
         
         // Bool variable for changing app width and height
         Set(AppOnPC, false);
+        
+        Set(SubmittedBarcode, Blank());
     StartScreen: ='Scan Screen'
     Theme: =PowerAppsTheme
 
