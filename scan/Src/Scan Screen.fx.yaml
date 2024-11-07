@@ -525,6 +525,7 @@
                                 ScanType: varEventType,
                                 Value: varCurrentScan.ScanValue,
                                 Room: dd1Room.Selected.RoomName,
+                                IsDeleted: false,
                                 AssociatedBedID: Blank()
                             }
                         );
@@ -539,6 +540,7 @@
                                 ScanType: varEventType,
                                 Value: varCurrentScan.ScanValue,
                                 Room: dd1Room.Selected.RoomName,
+                                IsDeleted: false,
                                 AssociatedBedID: If(
                                     !IsEmpty(colBedScans),
                                     Last(colBedScans).ID,
