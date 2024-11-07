@@ -2,7 +2,7 @@ ScanInputBox As CanvasComponent:
     Fill: =RGBA(0, 0, 0, 0)
     Height: =100
     InputText: ="Text"
-    runflow: =InsertRawScan.Run()
+    runflow: =
     ScanData: ="Text"
     Width: =640
     X: =0

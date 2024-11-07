@@ -7,19 +7,22 @@
       "RevisionNumber": 2
     },
     "ConnectedDataSourceInfoNameMapping": {
-      "Bed": "Bed",
-      "Created": "Created",
-      "Deleted": "Deleted",
+      "AssociatedBedID": "AssociatedBedID",
+      "DeletedAt": "DeletedAt",
+      "DeletedBy": "DeletedBy",
       "GUID": "GUID",
       "ID": "ID",
-      "Job": "Job",
-      "Tech": "Tech"
+      "IsDeleted": "IsDeleted",
+      "Room": "Room",
+      "ScanType": "ScanType",
+      "Timestamp": "Timestamp",
+      "Value": "Value"
     },
     "DatasetName": "serversql.agristarts.local,ASDB1",
     "EncodeDataset": false,
     "IsSampleData": false,
     "IsWritable": true,
-    "Name": "ProdScanMV",
+    "Name": "ScanEvents",
     "Type": "ConnectedDataSourceInfo"
   }
 ]

@@ -357,9 +357,9 @@
                         OnSelect: |-
                             =Remove(colScannedItems, ThisItem);
                             Patch(
-                                ProdScanMV, 
-                                LookUp(ProdScanMV, GUID = GUID(ThisItem.ScanGUID)),  // Find the record with matching GUID
-                                { Deleted: true }  // Update the 'Cancelled' field to true
+                                ScanEvents, 
+                                LookUp(ScanEvents, GUID = GUID(ThisItem.ScanGUID)),  // Find the record with matching GUID
+                                { IsDeleted: true }  // Update the 'Cancelled' field to true
                             );
                             
                             UpdateContext({ ShowDeleteContainer: false })
@@ -385,18 +385,18 @@
         Height: =100
         HoverColor: =Self.Color
         HoverFill: =RGBA(255, 255, 255, 1)
-        OnChange: |
-            =Set(
-                SubmittedBarcode,
-                Trim(ScanInputField_2.Text)
-            );
-            Reset(ScanInputField_2);
+        OnChange: |+
+            =If(
+                !IsBlank(ScanInputField_2.Text),
+                Collect(colScanQueue, { ScanValue: ScanInputField_2.Text, Timestamp: Now() });
+                Reset(ScanInputField_2)
+            )
+            
         RadiusBottomLeft: =0
         RadiusBottomRight: =0
         RadiusTopLeft: =0
         RadiusTopRight: =0
         Size: =48
-        Visible: =false
         Width: =Parent.Width - 2
         X: =1
         Y: =70
@@ -422,26 +422,26 @@
         X: =Parent.Width - Self.Width
         ZIndex: =7
 
-    ScanTypeDropdown As dropdown:
+    dd1Room As dropdown:
         Height: =Scan_Header.Height - 10
-        Items: =["MV","KP"]
+        Items: =Rooms
         Size: =21
-        Width: =200
+        Width: =132
         X: =(Parent.Width / 2) - (PCvsPhoneIco.Width / 2)
         Y: =(Scan_Header.Height-Self.Height)/2
         ZIndex: =8
 
-    ScanTypeLbl As label:
+    lblRoom As label:
         Align: =Align.Right
         Color: =RGBA(240, 240, 240, 1)
         FontWeight: =FontWeight.Bold
-        Height: =ScanTypeDropdown.Height
+        Height: =dd1Room.Height
         Size: =21
         Text: |-
-            ="Scan Type:"
+            ="Room:"
         Width: =175
-        X: =ScanTypeDropdown.X - Self.Width
-        Y: =ScanTypeDropdown.Y
+        X: =dd1Room.X - Self.Width
+        Y: =dd1Room.Y
         ZIndex: =9
 
     Info_pane As groupContainer.manualLayoutContainer:
@@ -492,7 +492,86 @@
         Y: =171
         ZIndex: =12
 
-    ScanInputBox_1 As ScanInputBox:
-        Y: =70
+    tmrScanProcessor As timer:
+        AutoStart: =true
+        Duration: =500
+        Height: =70
+        OnTimerEnd: |
+            =If(!varIsProcessing,
+                If(
+                    !IsEmpty(colScanQueue),
+                    // Set processing flag
+                    Set(varIsProcessing, true);
+            
+                    // Get the first scan in the queue
+                    Set(varCurrentScan, First(colScanQueue));
+            
+                    // Determine the Event Type
+                    Set(varEventType,
+                        If(
+                            StartsWith(varCurrentScan.ScanValue, "BV"), "BedCode",
+                            StartsWith(varCurrentScan.ScanValue, "J") || StartsWith(varCurrentScan.ScanValue, "T"), "JobTech",
+                            "Unknown"
+                        )
+                    );
+            
+                    // Insert the scan into SQL
+                    If(
+                        varEventType = "BedCode",
+                        Patch(
+                            ScanEvents,
+                            Defaults(ScanEvents),
+                            {
+                                ScanType: varEventType,
+                                Value: varCurrentScan.ScanValue,
+                                Room: dd1Room.Selected.RoomName,
+                                AssociatedBedID: Blank()
+                            }
+                        );
+                        // Update colBedScans
+                        Collect(colBedScans, Last(ScanEvents))
+                    ,
+                        varEventType = "JobTech",
+                        Patch(
+                            ScanEvents,
+                            Defaults(ScanEvents),
+                            {
+                                ScanType: varEventType,
+                                Value: varCurrentScan.ScanValue,
+                                Room: dd1Room.Selected.RoomName,
+                                AssociatedBedID: If(
+                                    !IsEmpty(colBedScans),
+                                    Last(colBedScans).ID,
+                                    Blank()
+                                )
+                            }
+                        );
+                        // Update colScanEvents
+                        Collect(colScanEvents, Last(ScanEvents))
+                    );
+            
+                    // Remove the processed scan from the queue
+                    Remove(colScanQueue, varCurrentScan);
+            
+                    // Provide feedback
+                    Notify(
+                        Switch(
+                            varEventType,
+                            "BedCode", "Bed scanned successfully!",
+                            "JobTech", "Job&Tech scanned and associated with Bed.",
+                            "Unknown", "Unknown scan type."
+                        ),
+                        NotificationType.Success
+                    );
+            
+                    // Reset processing flag
+                    Set(varIsProcessing, false);
+                )
+            )
+        Repeat: =true
+        Visible: =false
+        Width: =280
+        X: =340
+        Y: =485
         ZIndex: =13
 

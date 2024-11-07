@@ -2,7 +2,7 @@ App As appinfo:
     BackEnabled: =true
     MinScreenHeight: =1080
     MinScreenWidth: =If(AppOnPC, 1920, 640)
-    OnStart: |
+    OnStart: |+
         =// Items for navigation bar
         ClearCollect(
             NavTable,
@@ -27,6 +27,13 @@ App As appinfo:
         Set(AppOnPC, false);
         
         Set(SubmittedBarcode, "");
+        
+        // new shit
+        ClearCollect(colScanQueue, []);
+        ClearCollect(colBedScans, []);
+        ClearCollect(colScanEvents, Filter(ScanEvents, IsDeleted = false));
+        ClearCollect(colRooms, Rooms); // If using Rooms table
+        
     StartScreen: ='Scan Screen'
     Theme: =PowerAppsTheme
 
