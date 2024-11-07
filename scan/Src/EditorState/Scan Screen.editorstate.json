@@ -6135,7 +6135,7 @@
         {
           "Category": "Behavior",
           "PropertyName": "OnVisible",
-          "RuleProviderType": "User"
+          "RuleProviderType": "Unknown"
         }
       ],
       "StyleName": "defaultScreenStyle",
@@ -6244,7 +6244,7 @@
       "StyleName": "",
       "Type": "ControlInfo"
     },
-    "ScanInputField": {
+    "ScanInputField_2": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
         "Default",
@@ -6410,7 +6410,7 @@
       "IsLocked": false,
       "LayoutName": "",
       "MetaDataIDKey": "",
-      "Name": "ScanInputField",
+      "Name": "ScanInputField_2",
       "OptimizeForDevices": "Off",
       "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
@@ -6542,7 +6542,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "PressedFill",
+          "PropertyName": "PressedColor",
           "RuleProviderType": "Unknown"
         },
         {
@@ -6597,7 +6597,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "PressedColor",
+          "PropertyName": "PressedFill",
           "RuleProviderType": "Unknown"
         },
         {
@@ -6618,7 +6618,7 @@
         {
           "Category": "Behavior",
           "PropertyName": "OnChange",
-          "RuleProviderType": "User"
+          "RuleProviderType": "Unknown"
         }
       ],
       "StyleName": "defaultTextStyle",
@@ -7556,7 +7556,7 @@
         {
           "Category": "Behavior",
           "PropertyName": "OnSelect",
-          "RuleProviderType": "User"
+          "RuleProviderType": "Unknown"
         }
       ],
       "StyleName": "defaultButtonStyle",

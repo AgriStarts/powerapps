@@ -1,0 +1,33 @@
+ScanInputBox As CanvasComponent:
+    Fill: =RGBA(0, 0, 0, 0)
+    Height: =100
+    InputText: ="Text"
+    ScanData: ="Text"
+    Width: =640
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    ScanInputField As text:
+        Align: =Align.Center
+        Default: =
+        FocusedBorderColor: =Color.Green
+        FocusedBorderThickness: =6
+        Height: =100
+        HoverColor: =Self.Color
+        HoverFill: =RGBA(255, 255, 255, 1)
+        OnChange: |
+            =Set(
+                ScanData,
+                Trim(ScanInputField.Text)
+            );
+            Reset(ScanInputField);
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =0
+        RadiusTopLeft: =0
+        RadiusTopRight: =0
+        Size: =48
+        Width: =Parent.Width - 2
+        X: =1
+        ZIndex: =1
+
