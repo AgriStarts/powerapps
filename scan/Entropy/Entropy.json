@@ -18,6 +18,7 @@
   },
   "ControlUniqueGuids": {},
   "ControlUniqueIds": {
+    "25121364-81bb-4dd9-bfd5-060fe7bf81be": 93,
     "App": 1,
     "BackgroundRect": 42,
     "BarcodeContainer": 62,
@@ -39,6 +40,7 @@
     "DeleteContainer": 80,
     "Exit Button": 39,
     "Exit_icon": 40,
+    "f2c75af5-d8b7-4aa0-aae2-6ff9b5a254c9": 94,
     "Footer": 4,
     "FooterCoverRect": 7,
     "FooterRect": 5,
@@ -102,6 +104,7 @@
     "SessionBtn": 88,
     "TechLbl": 78,
     "TechTitleLbl": 66,
+    "Test_7F478737223C4B69": 2,
     "TitleSeparator1": 67,
     "TitleSeparator2": 68,
     "TutorialImage1": 44,
@@ -110,13 +113,14 @@
     "ValueSeparator1": 75,
     "ValueSeparator2": 77
   },
+  "DoesTestStepsMetadataExist": true,
   "FunctionParamsInvariantScripts": {},
   "FunctionParamsInvariantScriptsOnInstances": {},
-  "HeaderLastSavedDateTimeUTC": "11/07/2024 18:28:06",
+  "HeaderLastSavedDateTimeUTC": "11/07/2024 18:49:55",
   "IsLegacyComponentAllowGlobalScopeCase": false,
   "LocalConnectionIDReferences": {
     "4d7d97a7-88bc-4a4c-b143-efed2af2e4aa": "\"/providers/microsoft.powerapps/apis/shared_sql/connections/8472e13d186340a98d43ff6407070b7f\"",
-    "e30c212a-1d3c-4cda-a527-d61277bcf651": "\"/providers/microsoft.powerapps/apis/shared_logicflows/connections/b6ac710b-fb27-4261-a1e1-0806365a0241\"",
+    "db34bd22-1969-4c13-affc-90851154e0b9": "\"/providers/Microsoft.PowerApps/apis/shared_logicflows/connections/B6AC710BFB274261A1E10806365A0241-30C54F24E53CB110\"",
     "ec46ca98-546f-4ef8-8b1f-f6b4a8e3d515": "\"/providers/microsoft.powerapps/apis/shared_logicflows/connections/947abf4733044626960fc58658437214\""
   },
   "LocalDatabaseReferencesAsEmpty": true,
@@ -182,6 +186,7 @@
     "text": 7
   },
   "OverridablePropertiesEntry": {
+    "25121364-81bb-4dd9-bfd5-060fe7bf81be": {},
     "App": {},
     "BackgroundRect": {},
     "BarcodeContainer": {},
@@ -226,6 +231,7 @@
     "DeleteContainer": {},
     "Exit Button": {},
     "Exit_icon": {},
+    "f2c75af5-d8b7-4aa0-aae2-6ff9b5a254c9": {},
     "Footer": {},
     "FooterCoverRect": {},
     "FooterRect": {},
@@ -289,6 +295,7 @@
     "SessionBtn": {},
     "TechLbl": {},
     "TechTitleLbl": {},
+    "Test_7F478737223C4B69": {},
     "TitleSeparator1": {},
     "TitleSeparator2": {},
     "TutorialImage1": {},
@@ -351,6 +358,7 @@
     }
   },
   "PublishOrderIndices": {
+    "25121364-81bb-4dd9-bfd5-060fe7bf81be": 0,
     "App": 0,
     "BackgroundRect": 4,
     "BarcodeContainer": 23,
@@ -372,6 +380,7 @@
     "DeleteContainer": 41,
     "Exit Button": 1,
     "Exit_icon": 2,
+    "f2c75af5-d8b7-4aa0-aae2-6ff9b5a254c9": 0,
     "Footer": 0,
     "FooterCoverRect": 58,
     "FooterRect": 56,
@@ -435,6 +444,7 @@
     "SessionBtn": 49,
     "TechLbl": 39,
     "TechTitleLbl": 27,
+    "Test_7F478737223C4B69": 0,
     "TitleSeparator1": 28,
     "TitleSeparator2": 29,
     "TutorialImage1": 6,

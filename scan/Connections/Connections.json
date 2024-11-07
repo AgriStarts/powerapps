@@ -12,7 +12,7 @@
         "apiId": "/providers/microsoft.powerapps/apis/shared_sql",
         "apiVer": 2,
         "appVer": "3.24102.17",
-        "modifiedOn": "2024-11-06 20:54:00",
+        "modifiedOn": "2024-11-07 18:49:48",
         "policy": "{\"tabularActions\":{\"[dbo].[prodscanmv]\":[\"post\",\"patch\",\"get\"]},\"serviceActions\":[]}",
         "version": 2
       },
@@ -44,22 +44,19 @@
     "dependencies": {},
     "dependents": [
       "ec46ca98-546f-4ef8-8b1f-f6b4a8e3d515",
-      "e30c212a-1d3c-4cda-a527-d61277bcf651"
+      "db34bd22-1969-4c13-affc-90851154e0b9"
     ],
     "endpoints": [
       "serversql.agristarts.local,ASDB1"
     ],
     "id": "4d7d97a7-88bc-4a4c-b143-efed2af2e4aa"
   },
-  "e30c212a-1d3c-4cda-a527-d61277bcf651": {
+  "db34bd22-1969-4c13-affc-90851154e0b9": {
     "connectionRef": {
       "displayName": "Logic flows",
       "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1719/1.0.1719.3955/logicflows/icon.png",
       "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
       "parameterHints": {
-        "4d7d97a7-88bc-4a4c-b143-efed2af2e4aa": {
-          "value": "shared_sql"
-        },
         "workflowDisplayName": {
           "value": "InsertRawScan"
         },
@@ -69,9 +66,6 @@
         }
       },
       "parameterHintsV2": {
-        "shared_sql": {
-          "value": "4d7d97a7-88bc-4a4c-b143-efed2af2e4aa"
-        },
         "workflowDisplayName": {
           "value": "InsertRawScan"
         },
@@ -89,7 +83,7 @@
       "shared_sql": "4d7d97a7-88bc-4a4c-b143-efed2af2e4aa"
     },
     "dependents": [],
-    "id": "e30c212a-1d3c-4cda-a527-d61277bcf651"
+    "id": "db34bd22-1969-4c13-affc-90851154e0b9"
   },
   "ec46ca98-546f-4ef8-8b1f-f6b4a8e3d515": {
     "connectionRef": {
