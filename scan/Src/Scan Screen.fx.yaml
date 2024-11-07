@@ -396,6 +396,7 @@
         RadiusTopLeft: =0
         RadiusTopRight: =0
         Size: =48
+        Visible: =false
         Width: =Parent.Width - 2
         X: =1
         Y: =70
@@ -490,4 +491,8 @@
         X: =439
         Y: =171
         ZIndex: =12
+
+    ScanInputBox_1 As ScanInputBox:
+        Y: =70
+        ZIndex: =13
 
