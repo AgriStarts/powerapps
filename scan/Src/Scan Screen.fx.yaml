@@ -104,15 +104,16 @@
 
     BarcodeContainer As groupContainer.verticalAutoLayoutContainer:
         DropShadow: =DropShadow.None
-        Height: =Parent.Height - (Scan_Header.Height + BarcodeReader.Height + ScanInput.Height)
+        Height: =835
         LayoutDirection: =LayoutDirection.Vertical
         LayoutMode: =LayoutMode.Auto
         RadiusBottomLeft: =0
         RadiusBottomRight: =0
         RadiusTopLeft: =0
         RadiusTopRight: =0
+        Visible: =false
         Width: =Parent.Width
-        Y: =Scan_Header.Height + ScanInput.Height + 1
+        Y: =221
         ZIndex: =3
 
         BarcodeTitleContainer As groupContainer.horizontalAutoLayoutContainer:
@@ -488,16 +489,37 @@
         Y: =(Scan_Header.Height-Self.Height)/2
         ZIndex: =8
 
-    ScanTypeLbl As label:
+    "'lblRoom:' As label":
         Align: =Align.Right
         Color: =RGBA(240, 240, 240, 1)
         FontWeight: =FontWeight.Bold
         Height: =ScanTypeDropdown.Height
         Size: =21
         Text: |-
-            ="Scan Type:"
+            ="Room:"
         Width: =175
         X: =ScanTypeDropdown.X - Self.Width
         Y: =ScanTypeDropdown.Y
         ZIndex: =9
+
+    ctnInfoBar As groupContainer.manualLayoutContainer:
+        Height: =50
+        Width: =638
+        X: =1
+        Y: =171
+        ZIndex: =10
+
+        Label1 As label:
+            Height: =50
+            Size: =21
+            Text: ="Text"
+            Width: |
+                =Parent.Width/3
+            ZIndex: =1
+
+    ctnScans As groupContainer.manualLayoutContainer:
+        Height: =835
+        Width: =639
+        Y: =221
+        ZIndex: =11
 
