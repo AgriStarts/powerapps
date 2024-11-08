@@ -1,4 +1,5 @@
 "'Scan Screen' As screen":
+    LoadingSpinner: =LoadingSpinner.Data 
     OnVisible: |
         =Set(Bed, Blank());
         Set(Job, Blank());
@@ -17,6 +18,7 @@
             Set(Tech, Blank());
             Set(Job, Blank());
             Clear(colScannedItems);
+            Clear(colScanEvents);
             Reset(txtScanInput);
             SetFocus(txtScanInput);
         RadiusBottomLeft: =0
@@ -481,6 +483,7 @@
             LoadingSpinner: =LoadingSpinner.Data
             TemplatePadding: =0
             TemplateSize: =104
+            Transition: =Transition.Push
             Width: =639
             Y: =40
             ZIndex: =1
