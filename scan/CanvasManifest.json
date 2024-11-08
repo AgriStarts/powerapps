@@ -104,7 +104,7 @@
       "zeroalltabindexes": true
     },
     "Author": "",
-    "BindingErrorCount": 8,
+    "BindingErrorCount": 5,
     "ContainsThirdPartyPcfControls": false,
     "DefaultConnectedDataSourceMaxGetRowsCount": 500,
     "DocumentAppType": "Phone",
@@ -123,7 +123,7 @@
     "ManualOfflineProfileId": "",
     "Name": "ScannerRaw",
     "OriginatingVersion": "1.343",
-    "ParserErrorCount": 0,
+    "ParserErrorCount": 3,
     "ShowStatusBar": false
   },
   "PublishInfo": {

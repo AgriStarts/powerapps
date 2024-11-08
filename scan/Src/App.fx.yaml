@@ -2,7 +2,7 @@ App As appinfo:
     BackEnabled: =true
     MinScreenHeight: =1080
     MinScreenWidth: =If(AppOnPC, 1920, 640)
-    OnStart: |
+    OnStart: |-
         =// Items for navigation bar
         ClearCollect(
             NavTable,
@@ -26,7 +26,7 @@ App As appinfo:
         // Bool variable for changing app width and height
         Set(AppOnPC, false);
         
-        Set(SubmittedBarcode, "");
+        Set(SubmittedBarcode, Blank());
     StartScreen: ='Scan Screen'
     Theme: =PowerAppsTheme
 
