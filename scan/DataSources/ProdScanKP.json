@@ -7,14 +7,18 @@
       "RevisionNumber": 2
     },
     "ConnectedDataSourceInfoNameMapping": {
-      "RoomID": "RoomID",
-      "RoomName": "RoomName"
+      "Created": "Created",
+      "Deleted": "Deleted",
+      "GUID": "GUID",
+      "ID": "ID",
+      "Job": "Job",
+      "Tech": "Tech"
     },
     "DatasetName": "serversql.agristarts.local,ASDB1",
     "EncodeDataset": false,
     "IsSampleData": false,
     "IsWritable": true,
-    "Name": "Rooms",
+    "Name": "ProdScanKP",
     "Type": "ConnectedDataSourceInfo"
   }
 ]

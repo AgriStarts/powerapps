@@ -6,3 +6,7 @@
         Description: ="bed code"
         DisplayName: ="Case"
 
+        Step1 As TestStep:
+            Description: ="type bed code"
+            Value: =ScanInputBox_1.InputText = "BV0022"
+
