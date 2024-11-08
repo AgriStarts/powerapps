@@ -3,8 +3,8 @@
         =Set(Bed, Blank());
         Set(Job, Blank());
         Set(Tech, Blank());
-        Reset(ScanInputField);
-        SetFocus(ScanInputField);
+        Reset(ScanInput);
+        SetFocus(ScanInput);
 
     SessionBtn As button:
         BorderThickness: =0
@@ -16,8 +16,8 @@
             Set(Tech, Blank());
             Set(Job, Blank());
             Clear(colScannedItems);
-            Reset(ScanInputField);
-            SetFocus(ScanInputField);
+            Reset(ScanInput);
+            SetFocus(ScanInput);
         RadiusBottomLeft: =0
         RadiusBottomRight: =0
         RadiusTopLeft: =0
@@ -378,7 +378,7 @@
         Y: =BarcodeContainer.Y
         ZIndex: =4
 
-    ScanInputField As text:
+    ScanInput As text:
         Default: =
         FocusedBorderColor: =Color.Green
         FocusedBorderThickness: =6
@@ -388,10 +388,8 @@
         OnChange: |
             =Set(CodeType, BarcodeValidationFunction_1.ValidationResult);
             
-            Set(SubmittedBarcode, Trim(ScanInputField.Text));
-            Reset(ScanInputField);
-            
-            Set(BarcodeValidationFunction_1, 1);
+            Set(SubmittedBarcode, Trim(ScanInput.Text));
+            Reset(ScanInput);
             
             
             
@@ -560,7 +558,6 @@
             ZIndex: =2
 
     BarcodeValidationFunction_1 As BarcodeValidation:
-        BarcodeInput: =ScanInputField.Text
         Visible: =true
         X: =439
         Y: =171
