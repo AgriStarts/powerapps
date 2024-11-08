@@ -16,6 +16,11 @@ App As appinfo:
                     Title: "Scan",
                     Screen: 'Scan Screen',
                     Icon: Icon.Scan
+                },
+                {
+                    Title: "Exit",
+                    Screen: 'Scan Screen',
+                    Icon: Icon.Leave
                 }
             )
         );
@@ -25,8 +30,6 @@ App As appinfo:
         
         // Bool variable for changing app width and height
         Set(AppOnPC, false);
-        
-        Set(SubmittedBarcode, "");
         
         // new shit
         ClearCollect(colScanQueue, []);
