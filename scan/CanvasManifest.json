@@ -128,10 +128,10 @@
   },
   "PublishInfo": {
     "AppName": "Scanner",
-    "BackgroundColor": "rgba(0, 18, 107, 1)",
+    "BackgroundColor": "RGBA(0,176,240,1)",
     "IconColor": "RGBA(255,255,255,1)",
-    "IconName": "ViewList",
-    "LogoFileName": "logo.jpg",
+    "IconName": "Edit",
+    "LogoFileName": "",
     "PublishDataLocally": false,
     "PublishResourcesLocally": false,
     "PublishTarget": "player",
