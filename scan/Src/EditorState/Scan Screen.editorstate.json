@@ -1257,22 +1257,8 @@
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
         "Fill",
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "",
-          "InvariantPropertyName": "Height",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "",
-          "InvariantPropertyName": "Width",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
+        "Height",
+        "Width",
         "X",
         "Y",
         "ZIndex",
@@ -1317,7 +1303,7 @@
       "MetaDataIDKey": "",
       "Name": "BarcodeValidationFunction_1",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 5,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -5893,7 +5879,7 @@
       "MetaDataIDKey": "",
       "Name": "PCvsPhoneIco",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 1,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -6178,7 +6164,7 @@
       "MetaDataIDKey": "",
       "Name": "Scan_Header",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -6393,7 +6379,7 @@
       "MetaDataIDKey": "",
       "Name": "ScanInput",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 4,
+      "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -6696,7 +6682,7 @@
       "MetaDataIDKey": "",
       "Name": "ScanTypeDropdown",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 3,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -7019,7 +7005,7 @@
       "MetaDataIDKey": "",
       "Name": "ScanTypeLbl",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 2,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {

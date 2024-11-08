@@ -73,7 +73,7 @@
         "OptimizeForDevices": "Off",
         "Parent": "RightNavBar",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 66,
+        "PublishOrderIndex": 65,
         "Rules": [
           {
             "Category": "Design",

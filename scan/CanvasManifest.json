@@ -104,7 +104,7 @@
       "zeroalltabindexes": true
     },
     "Author": "",
-    "BindingErrorCount": 3,
+    "BindingErrorCount": 6,
     "ContainsThirdPartyPcfControls": false,
     "DefaultConnectedDataSourceMaxGetRowsCount": 500,
     "DocumentAppType": "Phone",
@@ -123,7 +123,7 @@
     "ManualOfflineProfileId": "",
     "Name": "Scanner",
     "OriginatingVersion": "1.343",
-    "ParserErrorCount": 2,
+    "ParserErrorCount": 5,
     "ShowStatusBar": false
   },
   "PublishInfo": {
