@@ -386,11 +386,11 @@
         HoverColor: =Self.Color
         HoverFill: =RGBA(255, 255, 255, 1)
         OnChange: |-
-            =If(
+            =Notify("test");
+            NotificationType.Information;
+            If(
                 !IsBlank(txtScanValue.Text),
                 // Split the scans by Enter (Carriage Return)
-                Notify("test");
-                NotificationType.Information;
                 ForAll(
                     Split(txtScanValue.Text, Char(13)),
                     Collect(colScanQueue, { ScanValue: Trim(Value), Timestamp: Now() });
