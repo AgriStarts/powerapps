@@ -214,8 +214,128 @@
                   "relativeAddress": 0
                 },
                 "region": {
+                  "charLength": 16,
+                  "charOffset": 0,
+                  "snippet": {
+                    "text": "ValidationResult"
+                  }
+                }
+              },
+              "properties": {
+                "member": "ValidationResult",
+                "module": "BarcodeValidationFunction",
+                "type": "BarcodeValidationFunction"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "ValidationResult"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "BarcodeValidationFunction.ValidationResult"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "BarcodeValidationFunction.ValidationResult",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 5,
+                  "charOffset": 19,
+                  "snippet": {
+                    "text": "Label"
+                  }
+                }
+              },
+              "properties": {
+                "member": "ValidationResult",
+                "module": "BarcodeValidationFunction",
+                "type": "BarcodeValidationFunction"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Label"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "BarcodeValidationFunction.ValidationResult"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "BarcodeValidationFunction.ValidationResult",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 5,
+                  "charOffset": 24,
+                  "snippet": {
+                    "text": ".Text"
+                  }
+                }
+              },
+              "properties": {
+                "member": "ValidationResult",
+                "module": "BarcodeValidationFunction",
+                "type": "BarcodeValidationFunction"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Error"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidDot",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "BarcodeValidationFunction.ValidationResult"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "BarcodeValidationFunction.ValidationResult",
+                  "relativeAddress": 0
+                },
+                "region": {
                   "charLength": 1,
-                  "charOffset": 22,
+                  "charOffset": 17,
                   "snippet": {
                     "text": "="
                   }
@@ -229,13 +349,257 @@
             }
           ],
           "message": {
+            "arguments": [
+              "Error",
+              "Error"
+            ],
             "id": "issue"
           },
           "properties": {
             "level": "High"
           },
-          "ruleId": "app-ErrCycleDetected",
-          "ruleIndex": 3
+          "ruleId": "app-ErrIncompatibleTypesForEquality-Left-Right",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "BarcodeValidationFunction.Label3.Text"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "BarcodeValidationFunction.Label3.Text",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 12,
+                  "charOffset": 62,
+                  "snippet": {
+                    "text": "BarcodeInput"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Text",
+                "module": "BarcodeValidationFunction",
+                "type": "BarcodeValidationFunction.Label3"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "BarcodeInput"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "BarcodeValidationFunction.Label3.Text"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "BarcodeValidationFunction.Label3.Text",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 10,
+                  "charOffset": 51,
+                  "snippet": {
+                    "text": "StartsWith"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Text",
+                "module": "BarcodeValidationFunction",
+                "type": "BarcodeValidationFunction.Label3"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "StartsWith"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidArgs-Func",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "BarcodeValidationFunction.Label3.Text"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "BarcodeValidationFunction.Label3.Text",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 12,
+                  "charOffset": 92,
+                  "snippet": {
+                    "text": "BarcodeInput"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Text",
+                "module": "BarcodeValidationFunction",
+                "type": "BarcodeValidationFunction.Label3"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "BarcodeInput"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "BarcodeValidationFunction.Label3.Text"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "BarcodeValidationFunction.Label3.Text",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 12,
+                  "charOffset": 232,
+                  "snippet": {
+                    "text": "BarcodeInput"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Text",
+                "module": "BarcodeValidationFunction",
+                "type": "BarcodeValidationFunction.Label3"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "BarcodeInput"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "BarcodeValidationFunction.Label3.Text"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "BarcodeValidationFunction.Label3.Text",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 10,
+                  "charOffset": 221,
+                  "snippet": {
+                    "text": "StartsWith"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Text",
+                "module": "BarcodeValidationFunction",
+                "type": "BarcodeValidationFunction.Label3"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "StartsWith"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidArgs-Func",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "BarcodeValidationFunction.Label3.Text"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "BarcodeValidationFunction.Label3.Text",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 12,
+                  "charOffset": 262,
+                  "snippet": {
+                    "text": "BarcodeInput"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Text",
+                "module": "BarcodeValidationFunction",
+                "type": "BarcodeValidationFunction.Label3"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "BarcodeInput"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -265,7 +629,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -295,7 +659,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 5
+          "ruleIndex": 7
         },
         {
           "locations": [
@@ -325,7 +689,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -355,7 +719,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 5
+          "ruleIndex": 7
         },
         {
           "locations": [
@@ -385,7 +749,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -415,7 +779,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 5
+          "ruleIndex": 7
         },
         {
           "locations": [
@@ -445,7 +809,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -475,7 +839,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 5
+          "ruleIndex": 7
         },
         {
           "locations": [
@@ -505,7 +869,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -535,7 +899,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 5
+          "ruleIndex": 7
         },
         {
           "locations": [
@@ -565,7 +929,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -595,7 +959,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 5
+          "ruleIndex": 7
         },
         {
           "locations": [
@@ -625,7 +989,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -655,7 +1019,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 5
+          "ruleIndex": 7
         },
         {
           "locations": [
@@ -685,7 +1049,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -715,7 +1079,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 5
+          "ruleIndex": 7
         },
         {
           "locations": [
@@ -745,7 +1109,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -775,7 +1139,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 5
+          "ruleIndex": 7
         },
         {
           "locations": [
@@ -805,7 +1169,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -835,7 +1199,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 5
+          "ruleIndex": 7
         },
         {
           "locations": [
@@ -865,7 +1229,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -895,7 +1259,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 5
+          "ruleIndex": 7
         },
         {
           "locations": [
@@ -925,7 +1289,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -955,7 +1319,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -985,7 +1349,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 5
+          "ruleIndex": 7
         },
         {
           "locations": [
@@ -1015,7 +1379,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -1045,7 +1409,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -1075,7 +1439,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 5
+          "ruleIndex": 7
         },
         {
           "locations": [
@@ -1105,7 +1469,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -1135,7 +1499,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -1165,7 +1529,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -1195,7 +1559,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 5
+          "ruleIndex": 7
         },
         {
           "locations": [
@@ -1225,7 +1589,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -1255,7 +1619,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 5
+          "ruleIndex": 7
         },
         {
           "locations": [
@@ -1285,7 +1649,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-FocusBorderShouldBeVisible",
-          "ruleIndex": 6
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -1315,7 +1679,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -1345,7 +1709,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 5
+          "ruleIndex": 7
         },
         {
           "locations": [
@@ -1375,7 +1739,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-FocusBorderShouldBeVisible",
-          "ruleIndex": 6
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -1405,7 +1769,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -1435,7 +1799,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 5
+          "ruleIndex": 7
         },
         {
           "locations": [
@@ -1465,7 +1829,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -1495,7 +1859,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 5
+          "ruleIndex": 7
         },
         {
           "locations": [
@@ -1525,7 +1889,7 @@
             "level": "Medium"
           },
           "ruleId": "app-UnusedVariables",
-          "ruleIndex": 7
+          "ruleIndex": 9
         }
       ],
       "tool": {
@@ -1585,10 +1949,42 @@
               }
             },
             {
-              "id": "app-ErrCycleDetected",
+              "id": "app-ErrInvalidDot",
               "messageStrings": {
                 "issue": {
-                  "text": "This rule creates a circular reference between properties, which is not allowed. A property cannot reference itself or other properties affected by its value."
+                  "text": "The '.' operator cannot be used on {0} values."
+                }
+              },
+              "properties": {
+                "componentType": "app",
+                "level": "High",
+                "primaryCategory": "formula",
+                "whyFix": ""
+              }
+            },
+            {
+              "id": "app-ErrIncompatibleTypesForEquality-Left-Right",
+              "messageStrings": {
+                "issue": {
+                  "text": "Incompatible types for comparison. These types can't be compared: {0}, {1}."
+                }
+              },
+              "properties": {
+                "componentType": "app",
+                "howToFix": [
+                  "You might need to convert the value to be the same type, such as converting a date string (e.g., \"12/31/2018\") to a date value.",
+                  "If you’re comparing records or tables, the field or column types must match exactly."
+                ],
+                "level": "High",
+                "primaryCategory": "formula",
+                "whyFix": ""
+              }
+            },
+            {
+              "id": "app-ErrInvalidArgs-Func",
+              "messageStrings": {
+                "issue": {
+                  "text": "The function '{0}' has some invalid arguments."
                 }
               },
               "properties": {
