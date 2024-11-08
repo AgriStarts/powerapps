@@ -31,8 +31,6 @@ App As appinfo:
         // Bool variable for changing app width and height
         Set(AppOnPC, false);
         
-        Set(SubmittedBarcode, "");
-        
         // new shit
         ClearCollect(colScanQueue, []);
         ClearCollect(colBedScans, []);
