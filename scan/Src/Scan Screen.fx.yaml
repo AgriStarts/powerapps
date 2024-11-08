@@ -136,7 +136,6 @@
 
             BedTitleLbl As label:
                 Align: =Align.Center
-                DisplayMode: =DisplayMode.View
                 FontWeight: =FontWeight.Bold
                 Height: =70
                 LayoutMinHeight: =70
@@ -558,6 +557,7 @@
             ZIndex: =2
 
     BarcodeValidationFunction_1 As BarcodeValidation:
+        BarcodeInput: =ScanInput.Text
         Visible: =true
         X: =439
         Y: =171

@@ -107,7 +107,7 @@
           },
           {
             "Category": "Data",
-            "InvariantScript": "If(\n    // Bed Code: \"B\" + letter + 4 digits\n    StartsWith(, \"B\") && \n    IsMatch(InputText, \"^B[A-Za-z][0-9]{4}$\"),\n        \"Bed Code\",\n    \n    // Job and Tech Code: \"J\" + 7 digits + \"T\" + 4 digits\n    StartsWith(InputText, \"J\") && \n    IsMatch(InputText, \"^J[0-9]{7}T[0-9]{4}$\"),\n        \"Job & Tech Code\",\n    \n    // Check if the input is blank\n    IsBlank(InputText),\n        \"-\",\n    \n    // If neither pattern matches\n        \"Invalid Code\"\n)",
+            "InvariantScript": "If(\n    // Bed Code: \"B\" + letter + 4 digits\n    StartsWith(SubmittedBarcode, \"B\") && \n    IsMatch(SubmittedBarcode, \"^B[A-Za-z][0-9]{4}$\"),\n        \"Bed Code\",\n    \n    // Job and Tech Code: \"J\" + 7 digits + \"T\" + 4 digits\n    StartsWith(SubmittedBarcode, \"J\") && \n    IsMatch(SubmittedBarcode, \"^J[0-9]{7}T[0-9]{4}$\"),\n        \"Job & Tech Code\",\n    \n    // Check if the input is blank\n    IsBlank(SubmittedBarcode),\n        \"-\",\n    \n    // If neither pattern matches\n        \"Invalid Code\"\n)",
             "Property": "Text",
             "RuleProviderType": "User"
           },
@@ -372,29 +372,29 @@
       "X",
       "Y",
       "ZIndex",
-      "ValidationResult",
+      "BarcodeInput",
       {
         "AFDDataSourceName": "",
         "AutoRuleBindingEnabled": false,
         "AutoRuleBindingString": "\"Text\"",
-        "InvariantPropertyName": "InputText",
+        "InvariantPropertyName": "ValidationResult",
         "IsLockable": false,
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638665197531932787",
+    "LastModifiedTimestamp": "638665185820958728",
     "Name": "BarcodeValidation",
     "Rules": [
       {
         "Category": "Data",
-        "InvariantScript": "ResultLabel.Text\n",
-        "Property": "ValidationResult",
+        "InvariantScript": "\"Text\"",
+        "Property": "BarcodeInput",
         "RuleProviderType": "System"
       },
       {
         "Category": "Data",
-        "InvariantScript": "SubmittedBarcode",
-        "Property": "InputText",
+        "InvariantScript": "ResultLabel.Text\n",
+        "Property": "ValidationResult",
         "RuleProviderType": "System"
       },
       {
@@ -447,20 +447,20 @@
   "CustomProperties": [
     {
       "Category": 0,
-      "DisplayName": "ValidationResult",
-      "Hidden": true,
-      "Name": "ValidationResult",
+      "DisplayName": "Barcode Input",
+      "Hidden": false,
+      "Name": "BarcodeInput",
       "PropertyDataTypeKey": "String",
-      "Tooltip": "ValidationResult",
+      "Tooltip": "Barcode input",
       "Type": "{\"Version\":\"1.343\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}"
     },
     {
       "Category": 0,
-      "DisplayName": "InputText",
-      "Hidden": false,
-      "Name": "InputText",
+      "DisplayName": "Validation Result",
+      "Hidden": true,
+      "Name": "ValidationResult",
       "PropertyDataTypeKey": "String",
-      "Tooltip": "A custom property",
+      "Tooltip": "Validation Result",
       "Type": "{\"Version\":\"1.343\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}"
     }
   ],
@@ -472,7 +472,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638665197531932787",
+  "LastModifiedTimestamp": "638665185820958728",
   "Name": "9f26c482ca9c456fb6f8acb5c2adab97",
   "OverridableProperties": {},
   "Version": "1.0"
