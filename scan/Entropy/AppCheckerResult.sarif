@@ -494,19 +494,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Scan Screen'.ScanTypeDropdown.AccessibleLabel"
+                  "fullyQualifiedName": "'Scan Screen'.ddRoom.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Scan Screen'.ScanTypeDropdown.AccessibleLabel",
+                  "fullyQualifiedName": "'Scan Screen'.ddRoom.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "Scan Screen",
-                "type": "'Scan Screen'.ScanTypeDropdown"
+                "type": "'Scan Screen'.ddRoom"
               }
             }
           ],

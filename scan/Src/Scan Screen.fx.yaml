@@ -11,7 +11,8 @@
         Fill: =AgriBlue
         Height: =80
         OnSelect: |-
-            =Set(varScanGUID, Blank());
+            =/*Set(varScanGUID, Blank());*/ 
+            Set(varCurrentScan, Blank());
             Set(Bed, Blank());
             Set(Tech, Blank());
             Set(Job, Blank());
@@ -424,26 +425,26 @@
         X: =Parent.Width - Self.Width
         ZIndex: =7
 
-    ScanTypeDropdown As dropdown:
+    ddRoom As dropdown:
         Height: =Scan_Header.Height - 10
         Items: =["MV","KP"]
         Size: =21
-        Width: =200
+        Width: =138
         X: =(Parent.Width / 2) - (PCvsPhoneIco.Width / 2)
         Y: =(Scan_Header.Height-Self.Height)/2
         ZIndex: =8
 
-    "'lblRoom:' As label":
+    lblRoom As label:
         Align: =Align.Right
         Color: =RGBA(240, 240, 240, 1)
         FontWeight: =FontWeight.Bold
-        Height: =ScanTypeDropdown.Height
+        Height: =ddRoom.Height
         Size: =21
         Text: |-
             ="Room:"
         Width: =175
-        X: =ScanTypeDropdown.X - Self.Width
-        Y: =ScanTypeDropdown.Y
+        X: =ddRoom.X - Self.Width
+        Y: =ddRoom.Y
         ZIndex: =9
 
     ctnInfoBar As groupContainer.manualLayoutContainer:
@@ -557,78 +558,41 @@
                 Width: =4
                 ZIndex: =6
 
-    Timer1 As timer:
+    tmrScanProcessor As timer:
         AutoStart: =true
         Duration: =200
         Height: =70
         OnTimerEnd: |
-            =Switch(
-                Left(txtScanInput.Text, 1),
-            
-                // If the first character is "B", update the record with Bed and refresh ScannedTime
-                "B", 
-                If(
-                    IsBlank(Bed),
+            =If(
+                !IsEmpty(colScanQueue),
+                
+                // Retrieve the first scan in the queue
+                Set(varCurrentScan, First(colScanQueue));
+                
+                // Remove the processed scan from the queue
+                Remove(colScanQueue, varCurrentScan);
+                
+                // Insert the scan into SQL with error handling
+                IfError(
+                    Patch(
+                        ScanEvents, // Replace with your SQL table name
+                        Defaults(ScanEvents),
+                        {
+                            Value: varCurrentScan.ScanValue,
+                            Room: ddRoom.Selected.Value,
+                            ScanType: "test",
+                            Timestamp: varCurrentScan.Timestamp,
+                            IsDeleted: 0
+                            // Add other fields as necessary
+                        }
+                    ),
                     
-                    Set(Bed, txtScanInput.Text);,
-            
-                    If(
-                        Bed <> txtScanInput.Text,
-                        // If bed variable is already set
-                        Set(Job, Blank());
-                        Set(Tech, Blank());
-                        Set(Bed, txtScanInput.Text);,
-            
-                        Notify("This bed is already scanned.", NotificationType.Warning);
-                    )
+                    // On Error
+                    Notify("Error processing scan. Please try again.", NotificationType.Error)
                 );
-            
-                Reset(txtScanInput);
-                SetFocus(txtScanInput);,
-            
-                "J",
-                // Ensure Bed has been scanned before updating Job
-                If(
-                    !IsBlank(Bed) && ScanTypeDropdown.Selected.Value = "MV",
-            
-                    // Set Job to the part before "T"
-                    Set(Job, Left(txtScanInput.Text, Find("T", txtScanInput.Text) - 1));
-            
-                    // Set Tech to the part after "T"
-                    Set(Tech, Mid(txtScanInput.Text, Find("T", txtScanInput.Text)));
-            
-                    Set(varScanGUID, GUID());
-            
-                    Collect(colScannedItems, {Bed: Bed, Job: Job, Tech: Tech, ScanGUID: varScanGUID});
-            
-                    // Use Patch to update Job, Tech, and ScannedTime in the matching record
-                    UpdateProdScanMV.Run(varScanGUID, Job, Bed, Tech, 0);
-            
-                    Reset(txtScanInput);
-                    SetFocus(txtScanInput);,
-            
-                    // If KP is selected
-                    ScanTypeDropdown.Selected.Value = "KP",
-            
-                    // Set Job to the part before "T"
-                    Set(Job, Left(txtScanInput.Text, Find("T", txtScanInput.Text) - 1));
-            
-                    // Set Tech to the part after "T"
-                    Set(Tech, Mid(txtScanInput.Text, Find("T", txtScanInput.Text)));
-            
-                    Set(varScanGUID, GUID());
-            
-                    Collect(colScannedItems, {Bed: Bed, Job: Job, Tech: Tech, ScanGUID: varScanGUID});
-            
-                    // Use Patch to update Job, Tech, and ScannedTime in the matching record
-                    UpdateProdScanMV.Run(varScanGUID, Job, Bed, Tech, 1);
-            
-                    Reset(txtScanInput);
-                    SetFocus(txtScanInput);,
-                    
-                    Notify("Please scan a bed first.", NotificationType.Warning);
-                )
-            );
+                
+                SetFocus(txtScanInput)
+            )
         Repeat: =true
         Size: =8
         Start: =true
