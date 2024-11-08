@@ -1,7 +1,7 @@
 BarcodeValidation As CanvasComponent:
-    BarcodeInput: ="Text"
     Fill: =RGBA(0, 0, 0, 0)
     Height: =50
+    InputText: =SubmittedBarcode
     Width: =200
     X: =0
     Y: =0
@@ -14,7 +14,7 @@ BarcodeValidation As CanvasComponent:
         Text: |-
             =If(
                 // Bed Code: "B" + letter + 4 digits
-                StartsWith(ResultLabel, "B") && 
+                StartsWith(InputText "B") && 
                 IsMatch(InputText, "^B[A-Za-z][0-9]{4}$"),
                     "Bed Code",
                 
