@@ -394,7 +394,6 @@
                 ForAll(
                     Split(txtScanValue.Text, Char(13)),
                     Collect(colScanQueue, { ScanValue: Trim(Value), Timestamp: Now() });
-                    NotificationType.Information
                 );
                 // Reset the TextInput to prepare for the next scan
                 Reset(txtScanValue)
