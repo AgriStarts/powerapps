@@ -380,7 +380,6 @@
 
     txtScanValue As text:
         Default: =
-        DisplayMode: =
         FocusedBorderColor: =Color.Green
         FocusedBorderThickness: =6
         Height: =100
