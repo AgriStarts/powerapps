@@ -478,7 +478,7 @@
 
         "Gallery2 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0'":
             DelayItemLoading: =true
-            Items: =colScanEvents
+            Items: =Sort(colScanEvents, Timestamp, SortOrder.Descending)
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             TemplatePadding: =0
