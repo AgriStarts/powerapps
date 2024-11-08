@@ -505,7 +505,7 @@
         Height: =70
         OnTimerEnd: |
             =If(
-                !IsEmpty(colScanQueue),
+                !varIsProcessing && !IsEmpty(colScanQueue),
                 // Set processing flag
                 Set(varIsProcessing, true);
                 
@@ -516,7 +516,7 @@
                 Remove(colScanQueue, varCurrentScan);
                 
                 // Determine Event Type
-                Set(varScanType,
+                Set(varEventType,
                     If(
                         StartsWith(varCurrentScan.ScanValue, "BV"), "BedCode",
                         StartsWith(varCurrentScan.ScanValue, "J") || StartsWith(varCurrentScan.ScanValue, "T"), "JobTech",
@@ -527,12 +527,12 @@
                 // Insert into SQL with error handling
                 IfError(
                     If(
-                        varScanType = "BedCode",
+                        varEventType = "BedCode",
                         Patch(
                             ScanEvents,
                             Defaults(ScanEvents),
                             {
-                                ScanType: varScanType,
+                                ScanType: varEventType,
                                 Value: varCurrentScan.ScanValue,
                                 Room: dd1Room.Selected.RoomName,
                                 AssociatedBedID: Blank()
@@ -541,12 +541,12 @@
                         // Update colBedScans
                         Collect(colBedScans, Last(ScanEvents))
                     ,
-                        varScanType = "JobTech",
+                        varEventType = "JobTech",
                         Patch(
                             ScanEvents,
                             Defaults(ScanEvents),
                             {
-                                ScanType: varScanType,
+                                ScanType: varEventType,
                                 Value: varCurrentScan.ScanValue,
                                 Room: Blank(),
                                 AssociatedBedID: If(!IsEmpty(colBedScans), Last(colBedScans).ID, Blank())
@@ -558,7 +558,7 @@
                     // Provide Feedback
                     Notify(
                         Switch(
-                            varScanType,
+                            varEventType,
                             "BedCode", "Bed scanned successfully!",
                             "JobTech", "Job&Tech scanned and associated with Bed.",
                             "Unknown", "Unknown scan type."
