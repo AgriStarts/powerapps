@@ -28,6 +28,7 @@ App As appinfo:
         
         // Initialize the scan queue
         ClearCollect(colScanQueue, []);
+        ClearCollect(colScanEvents, []);
     StartScreen: ='Scan Screen'
     Theme: =PowerAppsTheme
 
