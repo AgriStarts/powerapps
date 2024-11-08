@@ -385,12 +385,12 @@
         Height: =100
         HoverColor: =Self.Color
         HoverFill: =RGBA(255, 255, 255, 1)
-        OnChange: |
+        OnChange: |-
             =Set(
                 SubmittedBarcode,
                 Trim(ScanInputField.Text)
             );
-            Reset(ScanInputField);
+            Reset(ScanInputField)
         RadiusBottomLeft: =0
         RadiusBottomRight: =0
         RadiusTopLeft: =0
