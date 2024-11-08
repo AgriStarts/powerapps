@@ -380,16 +380,9 @@
         "IsLockable": false,
         "NameMapSourceSchema": "?"
       },
-      {
-        "AFDDataSourceName": "",
-        "AutoRuleBindingEnabled": false,
-        "AutoRuleBindingString": "",
-        "InvariantPropertyName": "BarcodeInput",
-        "IsLockable": false,
-        "NameMapSourceSchema": "?"
-      }
+      "BarcodeInput"
     ],
-    "LastModifiedTimestamp": "638665233364303303",
+    "LastModifiedTimestamp": "638665228315970480",
     "Name": "BarcodeValidation",
     "Rules": [
       {
@@ -400,7 +393,7 @@
       },
       {
         "Category": "Data",
-        "InvariantScript": "\"\"",
+        "InvariantScript": "",
         "Property": "BarcodeInput",
         "RuleProviderType": "System"
       },
@@ -479,7 +472,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638665233364303303",
+  "LastModifiedTimestamp": "638665228315970480",
   "Name": "9f26c482ca9c456fb6f8acb5c2adab97",
   "OverridableProperties": {},
   "Version": "1.0"
