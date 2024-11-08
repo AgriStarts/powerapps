@@ -476,27 +476,30 @@
         Y: =221
         ZIndex: =11
 
-        "Gallery2 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0'":
+        "galScanEvents As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0'":
+            BorderThickness: =2
             DelayItemLoading: =true
+            Height: =835
             Items: =Sort(colScanEvents, Timestamp, SortOrder.Descending)
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
+            ShowScrollbar: =false
+            TemplateFill: =RGBA(0, 40 , 200, 0)
             TemplatePadding: =0
-            TemplateSize: =104
-            Transition: =Transition.Push
-            Width: =639
-            Y: =40
+            TemplateSize: =70
+            Transition: =Transition.Pop
+            Width: =Parent.Width/2
             ZIndex: =1
 
             Image2 As image:
-                Height: =72
+                Height: =50
                 Image: ='White Leaf Blue Outline'
                 OnSelect: =Select(Parent)
                 RadiusBottomLeft: =8
                 RadiusBottomRight: =8
                 RadiusTopLeft: =8
                 RadiusTopRight: =8
-                Width: =72
+                Width: =50
                 X: =16
                 Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
                 ZIndex: =1
@@ -548,7 +551,8 @@
                 ZIndex: =4
 
             Separator2 As rectangle:
-                Height: =8
+                Fill: =RGBA(0, 18, 107, 1)
+                Height: =2
                 OnSelect: =Select(Parent)
                 Width: =Parent.TemplateWidth
                 Y: =Parent.TemplateHeight - Self.Height
@@ -560,6 +564,23 @@
                 Visible: =ThisItem.IsSelected
                 Width: =4
                 ZIndex: =6
+
+        Gallery3 As gallery.galleryHorizontal:
+            DelayItemLoading: =true
+            Height: =158
+            Items: =colScanQueue
+            LoadingSpinner: =LoadingSpinner.Data
+            TemplateSize: =If(Self.Layout = Layout.Horizontal, Min(320, Self.Width - 60), Min(320, Self.Height - 60))
+            Width: =320
+            X: =319
+            ZIndex: =1
+
+            Circle5 As circle:
+                Fill: =RGBA(141, 198, 63, 1)
+                Height: =15
+                OnSelect: =Select(Parent)
+                Width: =15
+                ZIndex: =1
 
     tmrScanProcessor As timer:
         AutoStart: =true
