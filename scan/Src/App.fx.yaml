@@ -16,6 +16,11 @@ App As appinfo:
                     Title: "Scan",
                     Screen: 'Scan Screen',
                     Icon: Icon.Scan
+                },
+                {
+                    Title: "Exit",
+                    Screen: 'Scan Screen',
+                    Icon: Icon.Leave
                 }
             )
         );
@@ -27,7 +32,6 @@ App As appinfo:
         Set(AppOnPC, false);
         
         Set(SubmittedBarcode, "");
-        Set(varIsProcessing, false);
         
         // new shit
         ClearCollect(colScanQueue, []);

@@ -380,7 +380,8 @@
 
     txtScanValue As text:
         Default: =
-        DisplayMode: =
+        DisplayMode: |
+            =If(varIsProcessing, DisplayMode.Disabled, DisplayMode.Edit)
         FocusedBorderColor: =Color.Green
         FocusedBorderThickness: =6
         Height: =100
@@ -390,8 +391,6 @@
             =If(
                 !IsBlank(txtScanValue.Text),
                 // Split the scans by Enter (Carriage Return)
-                Notify("test");
-                NotificationType.Information;
                 ForAll(
                     Split(txtScanValue.Text, Char(13)),
                     Collect(colScanQueue, { ScanValue: Trim(Value), Timestamp: Now() });
