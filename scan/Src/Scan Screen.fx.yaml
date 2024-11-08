@@ -498,77 +498,81 @@
 
     tmrScanProcessor As timer:
         AutoStart: =true
-        Duration: =200
+        Duration: =500
         Height: =70
         OnTimerEnd: |
-            =If(
-                !IsEmpty(colScanQueue),
-                // Set processing flag
-                Set(varIsProcessing, true);
-                
-                // Get the first scan in the queue
-                Set(varCurrentScan, First(colScanQueue));
-                
-                // Remove it from the queue
-                Remove(colScanQueue, varCurrentScan);
-                
-                // Determine Event Type
-                Set(varScanType,
+            =If(!varIsProcessing,
+                If(
+                    !IsEmpty(colScanQueue),
+                    // Set processing flag
+                    Set(varIsProcessing, true);
+            
+                    // Get the first scan in the queue
+                    Set(varCurrentScan, First(colScanQueue));
+            
+                    // Determine the Event Type
+                    Set(varEventType,
+                        If(
+                            StartsWith(varCurrentScan.ScanValue, "BV"), "BedCode",
+                            StartsWith(varCurrentScan.ScanValue, "J") || StartsWith(varCurrentScan.ScanValue, "T"), "JobTech",
+                            "Unknown"
+                        )
+                    );
+            
+                    // Insert the scan into SQL
                     If(
-                        StartsWith(varCurrentScan.ScanValue, "BV"), "BedCode",
-                        StartsWith(varCurrentScan.ScanValue, "J") || StartsWith(varCurrentScan.ScanValue, "T"), "JobTech",
-                        "Unknown"
-                    )
-                );
-                
-                // Insert into SQL with error handling
-                IfError(
-                    If(
-                        varScanType = "BedCode",
+                        varEventType = "BedCode",
                         Patch(
                             ScanEvents,
                             Defaults(ScanEvents),
                             {
-                                ScanType: varScanType,
+                                ScanType: varEventType,
                                 Value: varCurrentScan.ScanValue,
                                 Room: dd1Room.Selected.RoomName,
+                                IsDeleted: false,
                                 AssociatedBedID: Blank()
                             }
                         );
                         // Update colBedScans
                         Collect(colBedScans, Last(ScanEvents))
                     ,
-                        varScanType = "JobTech",
+                        varEventType = "JobTech",
                         Patch(
                             ScanEvents,
                             Defaults(ScanEvents),
                             {
-                                ScanType: varScanType,
+                                ScanType: varEventType,
                                 Value: varCurrentScan.ScanValue,
-                                Room: Blank(),
-                                AssociatedBedID: If(!IsEmpty(colBedScans), Last(colBedScans).ID, Blank())
+                                Room: dd1Room.Selected.RoomName,
+                                IsDeleted: false,
+                                AssociatedBedID: If(
+                                    !IsEmpty(colBedScans),
+                                    Last(colBedScans).ID,
+                                    Blank()
+                                )
                             }
                         );
                         // Update colScanEvents
                         Collect(colScanEvents, Last(ScanEvents))
                     );
-                    // Provide Feedback
+            
+                    // Remove the processed scan from the queue
+                    Remove(colScanQueue, varCurrentScan);
+            
+                    // Provide feedback
                     Notify(
                         Switch(
-                            varScanType,
+                            varEventType,
                             "BedCode", "Bed scanned successfully!",
                             "JobTech", "Job&Tech scanned and associated with Bed.",
                             "Unknown", "Unknown scan type."
                         ),
                         NotificationType.Success
-                    )
-                ,
-                    // Error Handling
-                    Notify("Error saving scan. Please try again.", NotificationType.Error)
-                );
-                
-                // Reset processing flag
-                Set(varIsProcessing, false)
+                    );
+            
+                    // Reset processing flag
+                    Set(varIsProcessing, false);
+                )
             )
         Repeat: =true
         Visible: =false
@@ -580,7 +584,7 @@
     "TestQueueGallery As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0'":
         DelayItemLoading: =true
         Height: =271
-        Items: =colScanQueue
+        Items: =CustomGallerySample
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         TemplatePadding: =0
@@ -610,7 +614,7 @@
             PaddingLeft: =0
             PaddingRight: =0
             PaddingTop: =0
-            Text: =ThisItem.ScanValue
+            Text: =ThisItem.SampleHeading
             VerticalAlign: =VerticalAlign.Top
             Width: =Parent.TemplateWidth - 173
             X: =103
@@ -625,7 +629,7 @@
             PaddingLeft: =0
             PaddingRight: =0
             PaddingTop: =0
-            Text: =ThisItem.ScanValue
+            Text: =ThisItem.SampleText
             VerticalAlign: =VerticalAlign.Top
             Width: =Title1.Width
             X: =Title1.X
