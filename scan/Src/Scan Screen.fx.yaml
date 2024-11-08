@@ -567,10 +567,14 @@
 
         Gallery3 As gallery.galleryHorizontal:
             DelayItemLoading: =true
-            Height: =158
+            DisplayMode: =DisplayMode.View
+            FocusedBorderThickness: =0
+            Height: =20
             Items: =colScanQueue
             LoadingSpinner: =LoadingSpinner.Data
-            TemplateSize: =If(Self.Layout = Layout.Horizontal, Min(320, Self.Width - 60), Min(320, Self.Height - 60))
+            ShowScrollbar: =false
+            TemplatePadding: =0
+            TemplateSize: =20
             Width: =320
             X: =319
             ZIndex: =1
@@ -597,24 +601,42 @@
                 Collect(colScanEvents, varCurrentScan);
                 Remove(colScanQueue, varCurrentScan);
                 
+                //Validate and Categorize
+                If(
+                    IsMatch(varCurrentScan.ScanValue, "^B[A-Z]\d{4}$"),
+                    
+                    // If Bed Scan
+                    Set(varScanType, "Bed"),
+                    
+                    If(
+                        IsMatch(varCurrentScan.ScanValue, "^J\d{7}T\d{4}$"),
+                        
+                        // If Job & Tech Scan
+                        Set(varScanType, "Job & Tech"),
+                        
+                        // Else: Invalid Scan
+                        Set(varScanType, "Invalid")
+                    )
+                )
+            
                 // Insert the scan into SQL with error handling
-                IfError(
+                If(varScanType <> "Invalid",
                     Patch(
                         ScanEvents, // Replace with your SQL table name
                         Defaults(ScanEvents),
                         {
                             Value: varCurrentScan.ScanValue,
                             Room: ddRoom.Selected.Value,
-                            ScanType: "test",
+                            ScanType: varScanType,
                             Timestamp: varCurrentScan.Timestamp,
                             IsDeleted: 0
                             // Add other fields as necessary
                         }
-                    ),
-                    
-                    // On Error
-                    Notify("Error processing scan. Please try again.", NotificationType.Error)
+                    )  
                 );
+                // On Error
+                   //     Notify("Error processing scan. Please try again.",
+                    //    NotificationType.Error)
                 
                 SetFocus(txtScanInput)
             )
@@ -624,6 +646,6 @@
         Visible: =false
         Width: =70
         X: =284
-        Y: =86
+        Y: =92
         ZIndex: =12
 
