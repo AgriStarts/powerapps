@@ -1289,7 +1289,6 @@
         "X",
         "Y",
         "ZIndex",
-        "OnReset",
         "ValidationResult",
         {
           "AFDDataSourceName": "",
@@ -1371,11 +1370,6 @@
           "Category": "Design",
           "PropertyName": "Visible",
           "RuleProviderType": "Unknown"
-        },
-        {
-          "Category": "Behavior",
-          "PropertyName": "OnReset",
-          "RuleProviderType": "System"
         }
       ],
       "StyleName": "",
