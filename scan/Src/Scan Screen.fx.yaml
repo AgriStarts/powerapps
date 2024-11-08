@@ -504,17 +504,21 @@
 
     ctnInfoBar As groupContainer.manualLayoutContainer:
         Height: =50
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =0
+        RadiusTopLeft: =0
+        RadiusTopRight: =0
         Width: =638
         X: =1
         Y: =171
         ZIndex: =10
 
-        Label1 As label:
+        Label3 As label:
+            Align: =Align.Center
             Height: =50
             Size: =21
-            Text: ="Text"
-            Width: |
-                =Parent.Width/3
+            Text: ="-"
+            Width: =Parent.Width/3
             ZIndex: =1
 
     ctnScans As groupContainer.manualLayoutContainer:
