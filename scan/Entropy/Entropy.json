@@ -13,8 +13,7 @@
     "LeftNavBar_1": 7,
     "RightNavBar": 5,
     "Scan_Header": 5,
-    "ScanInputBox": 9,
-    "ScanInputBox_1": 9
+    "ScanInputBox": 9
   },
   "ControlUniqueGuids": {},
   "ControlUniqueIds": {
@@ -94,7 +93,6 @@
     "Scan Screen": 52,
     "Scan_Header": 53,
     "ScanInputBox": 90,
-    "ScanInputBox_1": 92,
     "ScanInputField": 91,
     "ScanInputField_2": 57,
     "ScanTypeDropdown": 56,
@@ -112,7 +110,7 @@
   },
   "FunctionParamsInvariantScripts": {},
   "FunctionParamsInvariantScriptsOnInstances": {},
-  "HeaderLastSavedDateTimeUTC": "11/07/2024 18:28:06",
+  "HeaderLastSavedDateTimeUTC": "11/07/2024 18:26:21",
   "IsLegacyComponentAllowGlobalScopeCase": false,
   "LocalConnectionIDReferences": {
     "4d7d97a7-88bc-4a4c-b143-efed2af2e4aa": "\"/providers/microsoft.powerapps/apis/shared_sql/connections/8472e13d186340a98d43ff6407070b7f\"",
@@ -172,14 +170,14 @@
   "OrderXMLTemplate": {
     "button": 9,
     "circle": 6,
-    "dropdown": 8,
+    "dropdown": 7,
     "gallery": 5,
     "groupContainer": 2,
     "icon": 4,
     "image": 3,
     "label": 1,
     "rectangle": 0,
-    "text": 7
+    "text": 8
   },
   "OverridablePropertiesEntry": {
     "App": {},
@@ -281,7 +279,6 @@
     "Scan Screen": {},
     "Scan_Header": {},
     "ScanInputBox": {},
-    "ScanInputBox_1": {},
     "ScanInputField": {},
     "ScanInputField_2": {},
     "ScanTypeDropdown": {},
@@ -427,7 +424,6 @@
     "Scan Screen": 0,
     "Scan_Header": 14,
     "ScanInputBox": 0,
-    "ScanInputBox_1": 0,
     "ScanInputField": 18,
     "ScanInputField_2": 18,
     "ScanTypeDropdown": 17,
@@ -463,7 +459,6 @@
       "9f26c482ca9c456fb6f8acb5c2adab97": 2,
       "b3b6a53a67c942e1a1d2ace61526c987": 2,
       "BarcodeReader": 1,
-      "bb3685818dd6426e8d61e2acc05b8608": 1,
       "button": 1,
       "c0ecc19700a54464908ee73484083108": 1,
       "circle": 1,
