@@ -23,7 +23,7 @@ BarcodeValidation As CanvasComponent:
                 // Job and Tech Code: "J" + 7 digits + "T" + 4 digits
                 StartsWith(BarcodeValidation.BarcodeInput, "J") && 
                 IsMatch(BarcodeValidation.BarcodeInput, "^J[0-9]{7}T[0-9]{4}$"),
-                    "Job Code",
+                    "Job & Tech Code",
                 
                 // Check if the input is blank or only whitespace
                 Len(Trim(BarcodeValidation.BarcodeInput)) = 0,
