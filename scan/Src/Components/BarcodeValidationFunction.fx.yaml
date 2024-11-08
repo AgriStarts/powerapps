@@ -13,7 +13,7 @@ BarcodeValidationFunction As CanvasComponent:
         Align: =Align.Center
         Height: =50
         Size: =21
-        Text: |-
+        Text: |
             =If(
                 // Bed Code: "B" + letter + 4 digits
                 StartsWith(BarcodeValidationFunction.BarcodeInput, "B") && IsMatch(BarcodeValidationFunction.BarcodeInput, "^B[A-Za-z][0-9]{4}$"),
@@ -23,7 +23,7 @@ BarcodeValidationFunction As CanvasComponent:
                 StartsWith(BarcodeValidationFunction.BarcodeInput, "J") && IsMatch(BarcodeValidationFunction.BarcodeInput, "^J[0-9]{7}T[0-9]{4}$"),
                     "Job & Tech Code",
             
-                IsBlank(BarcodeValidationFunction.BarcodeInput),
+                Or("",Blank()),
                     "-",
                 
                 // If neither pattern matches
