@@ -12,7 +12,7 @@
         "apiId": "/providers/microsoft.powerapps/apis/shared_sql",
         "apiVer": 2,
         "appVer": "3.24102.17",
-        "modifiedOn": "2024-10-31 20:06:58",
+        "modifiedOn": "2024-10-31 18:11:37",
         "policy": "{\"tabularActions\":{\"[dbo].[prodscanmv]\":[\"post\",\"patch\",\"get\"]},\"serviceActions\":[]}",
         "version": 2
       },

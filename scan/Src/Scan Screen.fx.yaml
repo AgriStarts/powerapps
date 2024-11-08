@@ -385,32 +385,30 @@
         HoverColor: =Self.Color
         HoverFill: =RGBA(255, 255, 255, 1)
         OnChange: |
-            =Set(BarcodeType, BarcodeValidationFunction_1.ValidationResult)
+            =If(
             
-            If("B" = "B",
+                Left(Self.Text,1) = "B" && Len(Self.Text) = 6,
                 // If the first character is "B" and lenght is 6, update the record with Bed and refresh ScannedTime
             
                 If(
                     IsBlank(Bed),
             
-                    Set(Bed, Self.Text),
+                    Set(Bed, Self.Text);,
             
                     If(
                         Bed <> Self.Text,
                         // If bed variable is already set
                         Set(Job, Blank());
                         Set(Tech, Blank());
-                        Set(Bed, Self.Text),
+                        Set(Bed, Self.Text);,
             
-                        Notify("This bed is already scanned.", NotificationType.Warning)
+                        Notify("This bed is already scanned.", NotificationType.Warning);
                     )
-                )
-            ); 
+                ); 
             
                 Reset(Self);
-                SetFocus(Self);
+                SetFocus(Self);,
             
-            If(
                 Left(Self.Text, 1) = "J",
                 // Ensure Bed has been scanned before updating Job
                 If(
@@ -451,7 +449,6 @@
             
                     Reset(Self);
                     SetFocus(Self);,
-            
                     
                     Notify("Please scan a bed first.", NotificationType.Warning);
                 )
@@ -548,13 +545,4 @@
             Width: =Parent.Width/3
             X: =213
             ZIndex: =2
-
-    BarcodeValidationFunction_1 As BarcodeValidationFunction:
-        BarcodeInput: =ScanInput.Text
-        Height: =65
-        Visible: =false
-        Width: =77
-        X: =159
-        Y: =88
-        ZIndex: =12
 

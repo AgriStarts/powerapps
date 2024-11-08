@@ -3,7 +3,7 @@ BarcodeValidationFunction As CanvasComponent:
     Fill: =RGBA(0, 0, 0, 0)
     Height: =640
     ValidationResult: |
-        =Label3.Text
+        =Self.ValidationResult = Label3.Text
     Width: =640
     X: =0
     Y: =0
