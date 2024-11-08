@@ -35,7 +35,7 @@ LeftNavBar_1 As CanvasComponent:
         DelayItemLoading: =true
         Fill: =RGBA(43, 53, 131, 1)
         Height: =Parent.Height - 50
-        Items: =Parent.NavItems
+        Items: =NavTable
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         OnSelect: =Navigate(ThisItem.Screen)
