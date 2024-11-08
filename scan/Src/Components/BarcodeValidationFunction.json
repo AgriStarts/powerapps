@@ -93,11 +93,11 @@
         "IsLocked": false,
         "LayoutName": "",
         "MetaDataIDKey": "",
-        "Name": "ResultLabel",
+        "Name": "Label3",
         "OptimizeForDevices": "Off",
-        "Parent": "BarcodeValidation",
+        "Parent": "BarcodeValidationFunction",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 76,
+        "PublishOrderIndex": 81,
         "Rules": [
           {
             "Category": "Data",
@@ -107,7 +107,7 @@
           },
           {
             "Category": "Data",
-            "InvariantScript": "If(\n    // Bed Code: \"B\" + letter + 4 digits\n    StartsWith(SubmittedBarcode, \"B\") && \n    IsMatch(SubmittedBarcode, \"^B[A-Za-z][0-9]{4}$\"),\n        \"Bed Code\",\n    \n    // Job and Tech Code: \"J\" + 7 digits + \"T\" + 4 digits\n    StartsWith(SubmittedBarcode, \"J\") && \n    IsMatch(SubmittedBarcode, \"^J[0-9]{7}T[0-9]{4}$\"),\n        \"Job & Tech Code\",\n    \n    // Check if the input is blank\n    IsBlank(SubmittedBarcode),\n        \"-\",\n    \n    // If neither pattern matches\n        \"Invalid Code\"\n)",
+            "InvariantScript": "If(\n    // Bed Code: \"B\" + letter + 4 digits\n    StartsWith(BarcodeValidationFunction.BarcodeInput, \"B\") && IsMatch(BarcodeValidationFunction.BarcodeInput, \"^B[A-Za-z][0-9]{4}$\"),\n        \"Bed Code\",\n    \n    // Job and Tech Code: \"J\" + 7 digits + \"T\" + 4 digits\n    StartsWith(BarcodeValidationFunction.BarcodeInput, \"J\") && IsMatch(BarcodeValidationFunction.BarcodeInput, \"^J[0-9]{7}T[0-9]{4}$\"),\n        \"Job & Tech Code\",\n\n    IsBlank(BarcodeValidationFunction.BarcodeInput),\n        \"-\",\n    \n    // If neither pattern matches\n        \"Invalid Code\"\n)",
             "Property": "Text",
             "RuleProviderType": "User"
           },
@@ -137,14 +137,14 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "Self.Fill",
-            "Property": "HoverFill",
+            "InvariantScript": "Self.Color",
+            "Property": "PressedColor",
             "RuleProviderType": "Unknown"
           },
           {
             "Category": "Design",
-            "InvariantScript": "Self.Fill",
-            "Property": "PressedFill",
+            "InvariantScript": "Self.Color",
+            "Property": "HoverColor",
             "RuleProviderType": "Unknown"
           },
           {
@@ -162,7 +162,7 @@
           {
             "Category": "Design",
             "InvariantScript": "Self.BorderColor",
-            "Property": "FocusedBorderColor",
+            "Property": "PressedBorderColor",
             "RuleProviderType": "Unknown"
           },
           {
@@ -180,7 +180,7 @@
           {
             "Category": "Design",
             "InvariantScript": "Self.BorderColor",
-            "Property": "PressedBorderColor",
+            "Property": "FocusedBorderColor",
             "RuleProviderType": "Unknown"
           },
           {
@@ -197,14 +197,14 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "Self.Color",
-            "Property": "HoverColor",
+            "InvariantScript": "Self.Fill",
+            "Property": "PressedFill",
             "RuleProviderType": "Unknown"
           },
           {
             "Category": "Design",
-            "InvariantScript": "Self.Color",
-            "Property": "PressedColor",
+            "InvariantScript": "Self.Fill",
+            "Property": "HoverFill",
             "RuleProviderType": "Unknown"
           },
           {
@@ -382,8 +382,8 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638665185820958728",
-    "Name": "BarcodeValidation",
+    "LastModifiedTimestamp": "638665038687277070",
+    "Name": "BarcodeValidationFunction",
     "Rules": [
       {
         "Category": "Data",
@@ -393,7 +393,7 @@
       },
       {
         "Category": "Data",
-        "InvariantScript": "ResultLabel.Text\n",
+        "InvariantScript": "Label3.Text\n",
         "Property": "ValidationResult",
         "RuleProviderType": "System"
       },
@@ -439,7 +439,7 @@
     "AllowAccessToGlobals": false,
     "AllowCustomization": true,
     "Description": "",
-    "Name": "BarcodeValidation",
+    "Name": "BarcodeValidationFunction",
     "TemplateGuid": "9f26c482ca9c456fb6f8acb5c2adab97"
   },
   "ComponentType": "CanvasComponent",
@@ -472,7 +472,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638665185820958728",
+  "LastModifiedTimestamp": "638665038687277070",
   "Name": "9f26c482ca9c456fb6f8acb5c2adab97",
   "OverridableProperties": {},
   "Version": "1.0"

@@ -1,6 +1,6 @@
 {
   "ControlStates": {
-    "BarcodeValidation": {
+    "BarcodeValidationFunction": {
       "AllowAccessToGlobals": false,
       "ControlPropertyState": [
         "Fill",
@@ -41,7 +41,7 @@
       "IsLocked": false,
       "LayoutName": "",
       "MetaDataIDKey": "",
-      "Name": "BarcodeValidation",
+      "Name": "BarcodeValidationFunction",
       "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
@@ -90,7 +90,7 @@
       "StyleName": "",
       "Type": "ControlInfo"
     },
-    "ResultLabel": {
+    "Label3": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
         "Live",
@@ -177,7 +177,7 @@
       "IsLocked": false,
       "LayoutName": "",
       "MetaDataIDKey": "",
-      "Name": "ResultLabel",
+      "Name": "Label3",
       "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
@@ -214,12 +214,12 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "HoverFill",
+          "PropertyName": "PressedColor",
           "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
-          "PropertyName": "PressedFill",
+          "PropertyName": "HoverColor",
           "RuleProviderType": "Unknown"
         },
         {
@@ -234,7 +234,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "FocusedBorderColor",
+          "PropertyName": "PressedBorderColor",
           "RuleProviderType": "Unknown"
         },
         {
@@ -249,7 +249,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "PressedBorderColor",
+          "PropertyName": "FocusedBorderColor",
           "RuleProviderType": "Unknown"
         },
         {
@@ -264,12 +264,12 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "HoverColor",
+          "PropertyName": "PressedFill",
           "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
-          "PropertyName": "PressedColor",
+          "PropertyName": "HoverFill",
           "RuleProviderType": "Unknown"
         },
         {
@@ -382,5 +382,5 @@
       "Type": "ControlInfo"
     }
   },
-  "TopParentName": "BarcodeValidation"
+  "TopParentName": "BarcodeValidationFunction"
 }

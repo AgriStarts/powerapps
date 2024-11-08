@@ -387,12 +387,6 @@
         OnChange: |
             =Set(CodeType, BarcodeValidationFunction_1.ValidationResult);
             
-            Set(SubmittedBarcode, Trim(ScanInput.Text));
-            Reset(ScanInput);
-            
-            
-            
-            
             Switch(
                 CodeType,
                 
@@ -556,7 +550,7 @@
             X: =213
             ZIndex: =2
 
-    BarcodeValidationFunction_1 As BarcodeValidation:
+    BarcodeValidationFunction_1 As BarcodeValidationFunction:
         BarcodeInput: =ScanInput.Text
         Visible: =true
         X: =439
