@@ -25,6 +25,9 @@ App As appinfo:
         
         // Bool variable for changing app width and height
         Set(AppOnPC, false);
+        
+        // Initialize the scan queue
+        ClearCollect(colScanQueue, []);
     StartScreen: ='Scan Screen'
     Theme: =PowerAppsTheme
 

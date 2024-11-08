@@ -524,19 +524,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Scan Screen'.ScanInput.AccessibleLabel"
+                  "fullyQualifiedName": "'Scan Screen'.txtScanInput.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Scan Screen'.ScanInput.AccessibleLabel",
+                  "fullyQualifiedName": "'Scan Screen'.txtScanInput.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "Scan Screen",
-                "type": "'Scan Screen'.ScanInput"
+                "type": "'Scan Screen'.txtScanInput"
               }
             }
           ],
@@ -837,6 +837,66 @@
                 "member": "TabIndex",
                 "module": "Scan Screen",
                 "type": "'Scan Screen'.BarcodeContainer.BarcodeGallery.JobTrashIco"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Scan Screen'.ctnScans.Gallery2.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Scan Screen'.ctnScans.Gallery2.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Scan Screen",
+                "type": "'Scan Screen'.ctnScans.Gallery2"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Scan Screen'.ctnScans.Gallery2.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Scan Screen'.ctnScans.Gallery2.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Scan Screen",
+                "type": "'Scan Screen'.ctnScans.Gallery2"
               }
             }
           ],
