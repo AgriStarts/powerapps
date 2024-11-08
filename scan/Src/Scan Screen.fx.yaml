@@ -380,6 +380,8 @@
 
     txtScanValue As text:
         Default: =
+        DisplayMode: |
+            =If(varIsProcessing, DisplayMode.Disabled, DisplayMode.Edit)
         FocusedBorderColor: =Color.Green
         FocusedBorderThickness: =6
         Height: =100
@@ -391,7 +393,8 @@
                 // Split the scans by Enter (Carriage Return)
                 ForAll(
                     Split(txtScanValue.Text, Char(13)),
-                    Collect(colScanQueue, { ScanValue: Trim(Value), Timestamp: Now() })
+                    Collect(colScanQueue, { ScanValue: Trim(Value), Timestamp: Now() });
+                    NotificationType.Information
                 );
                 // Reset the TextInput to prepare for the next scan
                 Reset(txtScanValue)
