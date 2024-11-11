@@ -566,7 +566,7 @@
         AutoStart: =true
         Duration: =200
         Height: =70
-        OnTimerEnd: |
+        OnTimerEnd: |-
             =If(
                 !IsEmpty(colScanQueue),
                 
@@ -590,6 +590,10 @@
                                 )
                             )
                         },
+            
+                        If(varScanType, "BedCode",  // Save BedCode for infopane
+                            Set(varLastBedScan, varCurrentScan.ScanValue)
+                        );
                         
                         // Step 4: Assign BedCode if it's a Job & Tech scan
                         With(
