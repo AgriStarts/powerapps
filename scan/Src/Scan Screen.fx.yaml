@@ -18,7 +18,7 @@
             Set(Tech, Blank());
             Set(Job, Blank());
             Clear(colScannedItems);
-            Clear(colScanEvents);
+            Clear(colScanEvent);
             Reset(txtScanInput);
             SetFocus(txtScanInput);
         RadiusBottomLeft: =0
@@ -476,11 +476,11 @@
         Y: =221
         ZIndex: =11
 
-        "galScanEvents As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0'":
+        "galScanEvent As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0'":
             BorderThickness: =2
             DelayItemLoading: =true
             Height: =835
-            Items: =Sort(colScanEvents, Timestamp, SortOrder.Descending)
+            Items: =Sort(colScanEvent, Timestamp, SortOrder.Descending)
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             ShowScrollbar: =false
@@ -536,7 +536,10 @@
 
             NextArrow2 As icon.ChevronRight:
                 AccessibleLabel: =Self.Tooltip
+                BorderColor: =RGBA(0, 0, 0, 1)
                 Color: =RGBA(166, 166, 166, 1)
+                DisabledBorderColor: =RGBA(56, 56, 56, 1)
+                DisabledColor: =RGBA(119, 119, 119, 1)
                 Height: =50
                 Icon: =Icon.ChevronRight
                 OnSelect: =Select(Parent)
@@ -597,8 +600,8 @@
                 // Retrieve the first scan in the queue
                 Set(varCurrentScan, First(colScanQueue));
                 
-                // Remove the processed scan from the queue
-                Collect(colScanEvents, varCurrentScan);
+                // Move processed scan from the queue to list of events
+                Collect(colScanEvent, varCurrentScan);
                 Remove(colScanQueue, varCurrentScan);
                 
                 //Validate and Categorize
@@ -612,31 +615,29 @@
                         IsMatch(varCurrentScan.ScanValue, "^J\d{7}T\d{4}$"),
                         
                         // If Job & Tech Scan
-                        Set(varScanType, "Job & Tech"),
+                        Set(varScanType, "JobTech"),
                         
                         // Else: Invalid Scan
                         Set(varScanType, "Invalid")
                     )
-                )
+                );
             
-                // Insert the scan into SQL with error handling
-                If(varScanType <> "Invalid",
+                // Insert the scan into SQL
+                If(
+                    varScanType = "Bed" || varScanType = "JobTech",
+            
                     Patch(
-                        ScanEvents, // Replace with your SQL table name
-                        Defaults(ScanEvents),
+                        ScanEvent,
+                        Defaults(ScanEvent),
                         {
-                            Value: varCurrentScan.ScanValue,
-                            Room: ddRoom.Selected.Value,
+                            CreatedAt: varCurrentScan.Timestamp,
+                            EventValue: varCurrentScan.ScanValue,
+                            RoomCode: ddRoom.Selected.Value,
                             ScanType: varScanType,
-                            Timestamp: varCurrentScan.Timestamp,
-                            IsDeleted: 0
-                            // Add other fields as necessary
+                            AssociatedBedID: If(varScanType = "JobTech", varLastBedScan, Blank())
                         }
                     )  
                 );
-                // On Error
-                   //     Notify("Error processing scan. Please try again.",
-                    //    NotificationType.Error)
                 
                 SetFocus(txtScanInput)
             )
@@ -646,6 +647,6 @@
         Visible: =false
         Width: =70
         X: =284
-        Y: =92
+        Y: =98
         ZIndex: =12
 

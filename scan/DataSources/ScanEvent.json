@@ -8,21 +8,20 @@
     },
     "ConnectedDataSourceInfoNameMapping": {
       "AssociatedBedID": "AssociatedBedID",
+      "CreatedAt": "CreatedAt",
       "DeletedAt": "DeletedAt",
-      "DeletedBy": "DeletedBy",
+      "EventID": "EventID",
+      "EventValue": "EventValue",
       "GUID": "GUID",
-      "ID": "ID",
       "IsDeleted": "IsDeleted",
-      "Room": "Room",
-      "ScanType": "ScanType",
-      "Timestamp": "Timestamp",
-      "Value": "Value"
+      "RoomCode": "RoomCode",
+      "ScanType": "ScanType"
     },
     "DatasetName": "serversql.agristarts.local,ASDB1",
     "EncodeDataset": false,
     "IsSampleData": false,
     "IsWritable": true,
-    "Name": "ScanEvents",
+    "Name": "ScanEvent",
     "Type": "ConnectedDataSourceInfo"
   }
 ]
