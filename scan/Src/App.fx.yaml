@@ -28,7 +28,7 @@ App As appinfo:
         
         // Initialize the scan queue
         ClearCollect(colScanQueue, []);
-        ClearCollect(colScanEvent, []);
+        ClearCollect(colScanEvents, []);
         ClearCollect(colInvalidScans, []);
         Set(varLastBedScan, "");
         Set(varScanType, "");

@@ -18,7 +18,7 @@
             Set(Tech, Blank());
             Set(Job, Blank());
             Clear(colScannedItems);
-            Clear(colScanEvent);
+            Clear(colScanEvents);
             Reset(txtScanInput);
             SetFocus(txtScanInput);
         RadiusBottomLeft: =0
@@ -480,7 +480,7 @@
             BorderThickness: =2
             DelayItemLoading: =true
             Height: =835
-            Items: =Sort(colScanEvent, Timestamp, SortOrder.Descending)
+            Items: =Sort(colScanEvents, ScannedAt, SortOrder.Descending)
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             ShowScrollbar: =false
@@ -518,7 +518,7 @@
                 PaddingRight: =0
                 PaddingTop: =0
                 Size: =10
-                Text: =ThisItem.Timestamp
+                Text: =ThisItem.ScannedAt
                 VerticalAlign: =VerticalAlign.Top
                 Width: =ScanValue.Width
                 X: =4
@@ -597,10 +597,9 @@
                                 bedCode: If(
                                     varScanType = "JobTech",
                                     LookUp(
-                                        colScanEvents,
+                                        Sort(colScanEvents, ScannedAt, SortOrder.Descending),       // Reference previous Bed scan to attach to Job Scan, maybe change to bedcode stored in variable.
                                         ScanType = "BedCode",
-                                        ScanValue,
-                                        Sort(Timestamp, Descending).ScanValue
+                                        ScanValue
                                     ),
                                     Blank()
                                 ),
@@ -616,7 +615,6 @@
                                     ScannedAt: varCurrentScan.ScannedAt,    // Time of Scan from txtScanInput(OnChange)
                                     ScanType: varScanType,
                                     BedCode: bedCode
-                                    // Add other necessary fields here
                                 }
                             );
                             
@@ -625,7 +623,7 @@
                                 varScanType = "Bed" || varScanType = "JobTech",
                                 
                                 Patch(
-                                    ScanEvent, // Replace with your actual SQL table name
+                                    ScanEvent,
                                     Defaults(ScanEvent),
                                     {
                                         ScanValue: varCurrentScan.ScanValue,
@@ -633,7 +631,6 @@
                                         CreatedAt: Now(),        // Time of SQL Record Creation
                                         ScanType: varScanType,
                                         AssociatedBedID: bedCode
-                                        // Add other necessary fields here
                                     }
                                 );
                                 

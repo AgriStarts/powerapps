@@ -11,11 +11,11 @@
       "CreatedAt": "CreatedAt",
       "DeletedAt": "DeletedAt",
       "EventID": "EventID",
-      "EventValue": "EventValue",
       "GUID": "GUID",
       "IsDeleted": "IsDeleted",
       "RoomCode": "RoomCode",
-      "ScanType": "ScanType"
+      "ScanType": "ScanType",
+      "ScanValue": "ScanValue"
     },
     "DatasetName": "serversql.agristarts.local,ASDB1",
     "EncodeDataset": false,
