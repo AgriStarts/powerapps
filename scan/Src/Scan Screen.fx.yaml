@@ -391,7 +391,7 @@
                 // Add the trimmed scan value to the queue with a timestamp
                 Collect(colScanQueue, { 
                     ScanValue: Trim(txtScanInput.Text), 
-                    Timestamp: Now() 
+                    ScannedAt: Now() 
                 });
                 
                 // Reset the TextInput for the next scan
@@ -462,11 +462,11 @@
         Y: =171
         ZIndex: =10
 
-        Label3 As label:
+        lblLastBed As label:
             Align: =Align.Center
             Height: =50
             Size: =21
-            Text: ="-"
+            Text: =If(!varLastBedScan, "-", varLastBedScan)
             Width: =Parent.Width/3
             ZIndex: =1
 
@@ -486,25 +486,13 @@
             ShowScrollbar: =false
             TemplateFill: =RGBA(0, 40 , 200, 0)
             TemplatePadding: =0
-            TemplateSize: =70
+            TemplateSize: =26
             Transition: =Transition.Pop
             Width: =Parent.Width/2
             ZIndex: =1
 
-            Image2 As image:
-                Height: =50
-                Image: ='White Leaf Blue Outline'
-                OnSelect: =Select(Parent)
-                RadiusBottomLeft: =8
-                RadiusBottomRight: =8
-                RadiusTopLeft: =8
-                RadiusTopRight: =8
-                Width: =50
-                X: =16
-                Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
-                ZIndex: =1
-
             ScanValue As label:
+                DisplayMode: =DisplayMode.View
                 FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
                 Height: =Self.Size * 1.8
                 OnSelect: =Select(Parent)
@@ -512,50 +500,35 @@
                 PaddingLeft: =0
                 PaddingRight: =0
                 PaddingTop: =0
+                Size: =10
                 Text: =ThisItem.ScanValue
                 VerticalAlign: =VerticalAlign.Top
                 Width: =Parent.TemplateWidth - 173
-                X: =103
-                Y: =(Parent.TemplateHeight - (Self.Size * 1.8 + Timestamp.Size * 1.8)) / 2
+                X: =162
+                Y: =4
                 ZIndex: =2
 
             Timestamp As label:
+                DisplayMode: =DisplayMode.View
                 FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
                 Height: =Self.Size * 1.8
                 OnSelect: =Select(Parent)
                 PaddingBottom: =0
-                PaddingLeft: =0
+                PaddingLeft: =4
                 PaddingRight: =0
                 PaddingTop: =0
+                Size: =10
                 Text: =ThisItem.Timestamp
                 VerticalAlign: =VerticalAlign.Top
                 Width: =ScanValue.Width
-                X: =ScanValue.X
-                Y: =ScanValue.Y + ScanValue.Height
+                X: =4
+                Y: =4
                 ZIndex: =3
 
-            NextArrow2 As icon.ChevronRight:
-                AccessibleLabel: =Self.Tooltip
-                BorderColor: =RGBA(0, 0, 0, 1)
-                Color: =RGBA(166, 166, 166, 1)
-                DisabledBorderColor: =RGBA(56, 56, 56, 1)
-                DisabledColor: =RGBA(119, 119, 119, 1)
-                Height: =50
-                Icon: =Icon.ChevronRight
-                OnSelect: =Select(Parent)
-                PaddingBottom: =16
-                PaddingLeft: =16
-                PaddingRight: =16
-                PaddingTop: =16
-                Tooltip: ="View item details"
-                Width: =50
-                X: =Parent.TemplateWidth - Self.Width - 12
-                Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
-                ZIndex: =4
-
             Separator2 As rectangle:
-                Fill: =RGBA(0, 18, 107, 1)
-                Height: =2
+                BorderColor: =RGBA(204, 208, 225, 1)
+                Fill: =RGBA(204, 208, 225, 1)
+                Height: =1
                 OnSelect: =Select(Parent)
                 Width: =Parent.TemplateWidth
                 Y: =Parent.TemplateHeight - Self.Height
@@ -597,49 +570,99 @@
             =If(
                 !IsEmpty(colScanQueue),
                 
-                // Retrieve the first scan in the queue
-                Set(varCurrentScan, First(colScanQueue));
-                
-                // Move processed scan from the queue to list of events
-                Collect(colScanEvent, varCurrentScan);
-                Remove(colScanQueue, varCurrentScan);
-                
-                //Validate and Categorize
-                If(
-                    IsMatch(varCurrentScan.ScanValue, "^B[A-Z]\d{4}$"),
+                // Step 1: Retrieve the first scan from the queue
+                With(
+                    {
+                        varCurrentScan: First(colScanQueue)
+                    },
                     
-                    // If Bed Scan
-                    Set(varScanType, "Bed"),
+                    // Step 2: Remove the processed scan from the queue
+                    Remove(colScanQueue, varCurrentScan);
                     
-                    If(
-                        IsMatch(varCurrentScan.ScanValue, "^J\d{7}T\d{4}$"),
-                        
-                        // If Job & Tech Scan
-                        Set(varScanType, "JobTech"),
-                        
-                        // Else: Invalid Scan
-                        Set(varScanType, "Invalid")
-                    )
-                );
-            
-                // Insert the scan into SQL
-                If(
-                    varScanType = "Bed" || varScanType = "JobTech",
-            
-                    Patch(
-                        ScanEvent,
-                        Defaults(ScanEvent),
+                    // Step 3: Determine ScanType based on ScanValue
+                    With(
                         {
-                            CreatedAt: varCurrentScan.Timestamp,
-                            EventValue: varCurrentScan.ScanValue,
-                            RoomCode: ddRoom.Selected.Value,
-                            ScanType: varScanType,
-                            AssociatedBedID: If(varScanType = "JobTech", varLastBedScan, Blank())
-                        }
-                    )  
-                );
-                
-                SetFocus(txtScanInput)
+                            varScanType: If(
+                                IsMatch(varCurrentScan.ScanValue, "^B[A-Z]\d{4}$"), "BedCode",
+                                If(
+                                    IsMatch(varCurrentScan.ScanValue, "^J\d{7}T\d{4}$"), "JobTech",
+                                    "Invalid"
+                                )
+                            )
+                        },
+                        
+                        // Step 4: Assign BedCode if it's a Job & Tech scan
+                        With(
+                            {
+                                bedCode: If(
+                                    varScanType = "JobTech",
+                                    LookUp(
+                                        colScanEvents,
+                                        ScanType = "BedCode",
+                                        ScanValue,
+                                        Sort(Timestamp, Descending).ScanValue
+                                    ),
+                                    Blank()
+                                ),
+                                roomCode: ddRoom.Selected.Value
+                            },
+                            
+                            // Step 5: Create a new record with all necessary properties
+                            Collect(
+                                colScanEvents,
+                                {
+                                    ScanValue: varCurrentScan.ScanValue,
+                                    RoomCode: roomCode,
+                                    ScannedAt: varCurrentScan.ScannedAt,    // Time of Scan from txtScanInput(OnChange)
+                                    ScanType: varScanType,
+                                    BedCode: bedCode
+                                    // Add other necessary fields here
+                                }
+                            );
+                            
+                            // Step 6: Patch to SQL if the scan is valid
+                            If(
+                                varScanType = "Bed" || varScanType = "JobTech",
+                                
+                                Patch(
+                                    ScanEvent, // Replace with your actual SQL table name
+                                    Defaults(ScanEvent),
+                                    {
+                                        ScanValue: varCurrentScan.ScanValue,
+                                        RoomCode: roomCode,
+                                        CreatedAt: Now(),        // Time of SQL Record Creation
+                                        ScanType: varScanType,
+                                        AssociatedBedID: bedCode
+                                        // Add other necessary fields here
+                                    }
+                                );
+                                
+                                // Notify Success
+                                Notify(
+                                    varScanType & " scan processed successfully: " & varCurrentScan.ScanValue,
+                                    NotificationType.Success
+                                ),
+                                
+                                // Handle Invalid Scan
+                                Notify(
+                                    "Invalid scan format: " & varCurrentScan.ScanValue,
+                                    NotificationType.Error
+                                );
+                                
+                                // Optionally, log invalid scans
+                                Collect(
+                                    colInvalidScans,
+                                    {
+                                        ScanValue: varCurrentScan.ScanValue,
+                                        RoomCode: roomCode,
+                                        Timestamp: Now(),
+                                        Error: "Invalid scan format"
+                                    }
+                                )
+                            )
+                        )
+                    )
+                )
             )
         Repeat: =true
         Size: =8

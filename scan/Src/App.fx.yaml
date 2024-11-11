@@ -32,6 +32,7 @@ App As appinfo:
         ClearCollect(colInvalidScans, []);
         Set(varLastBedScan, "");
         Set(varScanType, "");
+        Set(varCurrentScan, []);
     StartScreen: ='Scan Screen'
     Theme: =PowerAppsTheme
 
