@@ -624,25 +624,7 @@
                             
                             // Step 6: Patch to SQL if the scan is valid
                             If(
-                                varScanType = "Bed" || varScanType = "JobTech",
-                                
-                                Patch(
-                                    ScanEvent,
-                                    Defaults(ScanEvent),
-                                    {
-                                        ScanValue: varCurrentScan.ScanValue,
-                                        RoomCode: roomCode,
-                                        CreatedAt: Now(),        // Time of SQL Record Creation
-                                        ScanType: varScanType,
-                                        AssociatedBedID: bedCode
-                                    }
-                                );
-                                
-                                // Notify Success
-                                Notify(
-                                    varScanType & " scan processed successfully: " & varCurrentScan.ScanValue,
-                                    NotificationType.Success
-                                ),
+                                varScanType = "Invalid",
                                 
                                 // Handle Invalid Scan
                                 Notify(
@@ -659,7 +641,21 @@
                                         Timestamp: Now(),
                                         Error: "Invalid scan format"
                                     }
-                                )
+                                ),
+                                
+                                // Else: Handle Valid Scans
+                                Patch(
+                                    ScanEvent,
+                                    Defaults(ScanEvent),
+                                    {
+                                        ScanValue: varCurrentScan.ScanValue,
+                                        RoomCode: roomCode,
+                                        CreatedAt: Now(),        // Time of SQL Record Creation
+                                        ScanType: varScanType,
+                                        AssociatedBedID: bedCode
+                                    }
+                                );
+                                // Mark collected Scan as Valid
                             )
                         )
                     )

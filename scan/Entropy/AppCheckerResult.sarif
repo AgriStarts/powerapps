@@ -1004,17 +1004,17 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "App.varCurrentScan"
+                  "fullyQualifiedName": "App.varScanType"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "App.varCurrentScan",
+                  "fullyQualifiedName": "App.varScanType",
                   "relativeAddress": 0
                 }
               },
               "properties": {
-                "member": "varCurrentScan",
+                "member": "varScanType",
                 "module": "App",
                 "type": "App"
               }
@@ -1034,17 +1034,17 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "App.varScanType"
+                  "fullyQualifiedName": "App.varCurrentScan"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "App.varScanType",
+                  "fullyQualifiedName": "App.varCurrentScan",
                   "relativeAddress": 0
                 }
               },
               "properties": {
-                "member": "varScanType",
+                "member": "varCurrentScan",
                 "module": "App",
                 "type": "App"
               }
